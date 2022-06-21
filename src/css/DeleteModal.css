@@ -1,0 +1,98 @@
+.delete-backdrop {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  min-h-height: 100vh;
+  padding-top: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 5rem;
+  text-align: center;
+  backdrop-filter: blur(2px) brightness(0.95);
+}
+
+.delete-overlay {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  bottom: 0px;
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.delete-modal {
+  border: 1px solid;
+  margin-top: 2rem;
+  margin-bottom: 25rem;
+  vertical-align: middle;
+  max-width: 32rem;
+  width: 100%;
+  position: relative;
+  display: inline-block;
+  vertical-align: bottom;
+  border-radius: 0.5rem;
+  text-align: left;
+  overflow: hidden;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+    0 8px 10px -6px rgb(0 0 0 / 0.1);
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.delete-message {
+  padding: 1.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1.25rem;
+  padding-bottom: 1rem;
+}
+
+.exclamation {
+  margin-left: auto;
+  margin-right: auto;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 9999px;
+}
+
+.exclamation-icon {
+  @apply text-red-500;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.delete-dialog {
+  margin-top: 0.75rem;
+  text-align: center;
+}
+
+.delete-dialog-title {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  line-height: 1.5rem;
+  font-weight: 500;
+}
+
+.delete-dialog-body {
+  @apply text-gray-500;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.delete-button-container {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.delete-button {
+}

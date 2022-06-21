@@ -1,0 +1,151 @@
+.article-view-card {
+  display: block;
+  margin: 75px;
+  color: var(--text);
+  margin-right: 150px;
+  margin-left: 150px;
+  background-color: var(--bg-secondary);
+  height: 100vh;
+  position: relative;
+  display: flex;
+  height: auto;
+  min-height: 50px;
+  border: 1px solid var(--gray);
+  align-items: center;
+}
+
+.article-view-votes {
+  display: flex;
+  flex-direction: column;
+  max-width: 90px;
+  min-width: 90px;
+  border: 1px solid var(--bg-gray);
+  background-color: var(--bg-secondary);
+  border-right-width: 0px;
+  justify-content: center;
+  align-items: center;
+}
+.article-vote {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--text-gray);
+  cursor: pointer;
+}
+
+.uvpote:hover,
+.upvote-clicked {
+  color: green;
+}
+
+.downvote:hover,
+.downvote-clicked {
+  color: red;
+}
+
+.article .downvote:hover,
+.downvote-clicked {
+  color: var(--red);
+}
+.article-vote-count {
+  text-align: center;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.collapsible {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  background-color: var(--bg-secondary);
+}
+.try {
+  background-color: var(--bg-secondary);
+}
+.article-link {
+  display: flex;
+  width: 100%;
+  height: auto;
+  min-height: 50px;
+  color: var(--text);
+  border-left-width: 0px;
+  border-right-width: 0px;
+  background-color: var(--bg-secondary);
+  text-align: left;
+  align-items: center;
+  word-wrap: break-word;
+  flex-wrap: wrap;
+}
+.article-preview {
+  display: flex;
+  height: auto;
+  min-height: 50px;
+  text-align: justify;
+  padding-right: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  flex-wrap: wrap;
+  align-items: left;
+}
+.article-button {
+  float: left;
+  display: flex;
+  padding: 8px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.article-button:hover {
+  background: var(--highlighted);
+}
+.article-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--text-gray);
+  fill: var(--text-gray);
+}
+
+b {
+  font-weight: 600;
+}
+
+h2 {
+  line-height: 1.25rem;
+  font-size: 14px;
+  font-weight: 500;
+  padding-bottom: 3px;
+  letter-spacing: 0.1px;
+}
+
+.article-title {
+  display: flex;
+  flex-wrap: wrap;
+}
+.article-details-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+h3 {
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 700;
+}
+.article-details {
+  color: var(--text-gray);
+  line-height: 1.25rem;
+  letter-spacing: 0.025em;
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+.article-author {
+  color: var(--red);
+  font-size: 0.8rem;
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+p {
+  line-height: 1.25rem;
+  font-size: 0.875rem;
+}

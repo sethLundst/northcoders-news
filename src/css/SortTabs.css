@@ -1,0 +1,29 @@
+.tabs-container {
+  max-width: 100%;
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
+  margin-top: 1.25rem;
+}
+
+.tabs {
+  border: solid 1px;
+  border-width: 1px;
+  border-radius: 0.75rem;
+  display: flex;
+  padding: 0.25rem;
+}
+
+.tab {
+  width: 100%;
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+}
+
+.focused {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}

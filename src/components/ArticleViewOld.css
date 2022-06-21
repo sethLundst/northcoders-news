@@ -1,0 +1,104 @@
+.article-view {
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+}
+
+.background {
+  background-color: var(--bg-secondary);
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
+  border-radius: 0.75rem;
+  padding-left: 1.25rem;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.posted-by {
+  padding: 0.25rem;
+  margin-left: 0.25rem;
+  margin-top: 0.5rem;
+  display: flex;
+}
+
+.delete-article-button {
+  fill: red;
+  display: flex;
+  margin-right: 1.25rem;
+}
+
+.view-title {
+  display: block;
+  margin-bottom: 0.75rem;
+  padding: 0.25rem;
+  margin-left: 0.25rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 500;
+}
+
+.view-body {
+  display: block;
+  margin-left: 0.5rem /* 8px */;
+  font-size: 1.125rem /* 18px */;
+  line-height: 1.75rem /* 28px */;
+  line-height: 1.25;
+  margin-right: 2.5rem;
+}
+
+.button-container {
+  padding: 0.25rem /* 4px */;
+  margin-left: 0.25rem /* 4px */;
+  margin-top: 0.75rem /* 12px */;
+  margin-bottom: 0.5rem;
+  flex-direction: row;
+}
+
+.comment-view-button {
+  @apply hover:scale-105;
+  height: 1.75rem;
+  width: 1.75 rem;
+  display: inline-block;
+  margin-right: 0.25rem;
+  cursor: pointer;
+}
+
+.vote-button-container {
+  margin-top: 0.6rem;
+}
+
+.upvote {
+  @apply hover:scale-105 hover:text-green-500;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: inline-block;
+  cursor: pointer;
+  margin-left: 0.75rem;
+}
+
+.upvote-clicked {
+  @apply text-green-500 scale-105;
+}
+
+.downvote {
+  @apply hover:scale-105 hover:text-red-500;
+  display: inline-block;
+  margin-left: -0.15rem;
+  margin-right: 0.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+}
+
+.downvote-clicked {
+  @apply text-red-500 scale-105;
+}
+
+.article-trash-icon {
+  @apply hover:scale-105;
+  height: 1.5rem;
+  width: 1.5rem;
+  display: inline-block;
+  margin-left: 0.75rem;
+  margin-right: 0.2rem;
+  cursor: pointer;
+}
