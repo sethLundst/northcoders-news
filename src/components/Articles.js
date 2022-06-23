@@ -13,7 +13,7 @@ import { useContext } from "react";
 
 function Articles() {
   const navigate = useNavigate();
-  const { params } = useContext(ParamsContext);
+  const { params, setParams, filter } = useContext(ParamsContext);
   const { articles, setArticles, error, isLoading } = useFetchArticles(params);
 
   if (error) navigate("/error", { state: error.data });
@@ -67,7 +67,12 @@ function Articles() {
           </Link>
         ))}
       </div>
-      <Pagination articles={articles} />
+      <Pagination
+        articles={articles}
+        params={params}
+        setParams={setParams}
+        filter={filter}
+      />
     </>
   );
 }

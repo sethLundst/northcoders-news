@@ -6,51 +6,41 @@ import { useFetchComments } from "../hooks";
 import { useParams } from "react-router-dom";
 import { useContext, useState } from "react";
 import { UserIcon } from "../icons";
+import { ParamsContext } from "../contexts/ParamsContext";
 
-export default function CommentList({
-  article,
-  setArticle,
-  commentDownVoteClicked,
-  setCommentDownVoteClicked,
-  commentUpVoteClicked,
-  setCommentUpVoteClicked,
-}) {
+export default function CommentList({ article }) {
   const { article_id } = useParams();
   const categories = ["Most Recent", "Oldest", "Most Votes", "Fewest Votes"];
-  const user = useContext(UserContext);
   const [params, setParams] = useState({
     limit: 10,
     p: 1,
   });
+  const user = useContext(UserContext);
+
   const [open, setOpen] = useState(true);
   const [showModal, setShowModal] = useState({ bool: false, type: null });
   const [status, setStatus] = useState("Submit");
-  const { comments, setComments, error, setError, isLoading } =
-    useFetchComments(article_id, params);
+  const { comments, setComments, error, isLoading } = useFetchComments(
+    article_id,
+    params
+  );
 
   if (error) return <Error message={error.err.response}></Error>;
   if (isLoading) return <></>;
   return (
-    <>
-      {/* <CommentForm
-        setParams={setParams}
-        article={article}
-        setArticle={setArticle}
-        status={status}
-        setStatus={setStatus}
-      /> */}
+    <div>
       {/* <SortTabs categories={categories} params={params} setParams={setParams} /> */}
 
       <div className="comment-list">
         {comments.map((comment) => (
-          <div className="comment-card">
+          <div className="comment-card" key={comment.comment_id}>
             <div className="left-container">
               <div>
                 <UserIcon className="comment-user-icon" />
               </div>
 
               <button className="thread-button">
-                <div class="thread"></div>
+                <div className="thread"></div>
               </button>
             </div>
 
@@ -79,6 +69,12 @@ export default function CommentList({
           </div>
         ))}
       </div>
+      <Pagination
+        comments={comments}
+        filter={{ comment: article.comment_count }}
+        params={params}
+        setParams={setParams}
+      />
       {/* <DeleteModal
           showModal={showModal}
           setShowModal={setShowModal}
@@ -91,12 +87,6 @@ export default function CommentList({
           status={status}
           setStatus={setStatus}
         ></DeleteModal> */}
-      <Pagination
-        comments={comments}
-        filter={{ comment: article.comment_count }}
-        params={params}
-        setParams={setParams}
-      />
-    </>
+    </div>
   );
 }

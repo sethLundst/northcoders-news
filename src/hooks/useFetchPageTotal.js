@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { getArticles, getArticlesByTopic } from "../api";
 
 export default function useFetchPageTotal(filter, params) {
-  const [pageTotal, setPageTotal] = useState({ elements: "", pages: "" });
+  const [pageTotal, setPageTotal] = useState({ items: "", pages: "" });
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -20,18 +20,18 @@ export default function useFetchPageTotal(filter, params) {
         });
         filter.hasOwnProperty("comment")
           ? setPageTotal({
-              elements: filter.comment,
+              items: filter.comment,
               pages: Math.ceil(filter.comment / params.limit),
             })
           : filter.hasOwnProperty("topic")
           ? setPageTotal({
-              elements: topicResponse.data.articles.length,
+              items: topicResponse.data.articles.length,
               pages: Math.ceil(
                 topicResponse.data.articles.length / params.limit
               ),
             })
           : setPageTotal({
-              elements: response.data.articles.length,
+              items: response.data.articles.length,
               pages: Math.ceil(response.data.articles.length / params.limit),
             });
         setIsLoading(false);
@@ -40,7 +40,7 @@ export default function useFetchPageTotal(filter, params) {
       }
     }
     getPageTotal();
-  }, [params.limit, params.topic, filter]);
+  }, [filter, params.limit, params.topic]);
 
   return { pageTotal, error, isLoading };
 }

@@ -1,9 +1,9 @@
 .article-view-card {
   display: flex;
-  margin-top: 35px;
+  margin-top: 20px;
   color: var(--text);
-  margin-right: 110px;
-  margin-left: 110px;
+  margin-right: 40px;
+  margin-left: 40px;
   background-color: var(--bg-secondary);
   height: 100vh;
   position: relative;
@@ -12,7 +12,7 @@
   min-height: 50px;
   align-items: flex-start;
   padding-top: 10px;
-  padding-bottom: 65px;
+  padding-bottom: 35px;
   padding-right: 60px;
 }
 
@@ -21,7 +21,6 @@
   flex-direction: column;
   max-width: 60px;
   min-width: 60px;
-
   background-color: var(--bg-secondary);
   border-right-width: 0px;
 }

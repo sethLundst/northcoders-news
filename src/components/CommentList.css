@@ -6,8 +6,8 @@
   position: relative;
   align-items: flex-start;
   color: var(--text);
-  margin-right: 110px;
-  margin-left: 110px;
+  margin-right: 40px;
+  margin-left: 40px;
   background-color: var(--bg-secondary);
   height: auto;
   min-height: 50px;

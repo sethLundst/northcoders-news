@@ -1,18 +1,26 @@
 import "./ArticleView.css";
-import { CommentList, DeleteModal, Error, ExpandButton, VoteButtons } from ".";
+import {
+  CommentList,
+  DeleteModal,
+  Error,
+  Pagination,
+  ExpandButton,
+  VoteButtons,
+  CommentForm,
+} from ".";
 import { UserContext } from "../contexts/UserContext";
 import { ParamsContext } from "../contexts/ParamsContext";
-import { useFetchArticle, useFetchArticles } from "../hooks";
+import { useFetchArticle, useFetchArticles, useFetchComments } from "../hooks";
 import { useContext, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 
 export default function ArticleView() {
   const { article_id } = useParams();
-  const { params } = useContext(ParamsContext);
-  const { articles, setArticles } = useFetchArticles(params);
+  const { setParams } = useContext(ParamsContext);
   const { article, setArticle, error, isLoading } = useFetchArticle(article_id);
   const [open, setOpen] = useState(true);
   const [showModal, setShowModal] = useState({ bool: false, type: null });
+  const [status, setStatus] = useState("Submit");
 
   if (error) return <Error message={error.err.response}></Error>;
   if (isLoading) return <></>;
@@ -45,7 +53,14 @@ export default function ArticleView() {
           <p className="article-body">{article.body}</p>
         </div>
       </div>
-      <CommentList article={article} setArticle={setArticle} />
+      <CommentForm
+        setParams={setParams}
+        article={article}
+        setArticle={setArticle}
+        status={status}
+        setStatus={setStatus}
+      />
+      <CommentList article={article} />
     </div>
   );
 }

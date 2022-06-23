@@ -14,7 +14,7 @@ export default function Navbar() {
   return (
     <header>
       <div className="header-container">
-        <Link to="/" className="header">
+        <Link to="/" className="header" onClick={() => {}}>
           <Logo className="logo" />
           <h1>Northcoders News</h1>
         </Link>

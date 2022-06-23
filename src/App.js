@@ -7,6 +7,7 @@ import {
   Error,
   Navbar,
   ThemeProvider,
+  CommentList,
 } from "./components";
 import useUser, { UserProvider } from "./contexts/UserContext";
 import { VotesProvider } from "./contexts/VotesContext";

@@ -10,7 +10,6 @@ export function ParamsProvider({ children }) {
     p: 1,
     topic: selected === "All" ? "" : selected.toLowerCase(),
   });
-
   return (
     <ParamsContext.Provider
       value={{ selected, setSelected, filter, setFilter, params, setParams }}

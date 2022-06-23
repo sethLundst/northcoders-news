@@ -1,4 +1,4 @@
-import "../css/CommentForm.css";
+import "./CommentForm.css";
 import { Error } from ".";
 import { postComment } from "../api";
 import { UserContext } from "../contexts/UserContext";
@@ -17,7 +17,8 @@ export default function CommentForm({
   const user = useContext(UserContext);
   const [error, setError] = useState(null);
   const [invalid, setInvalid] = useState(false);
-  const [newComment, setNewComment] = useState();
+  const [newComment, setNewComment] = useState("");
+  const [empty, setEmpty] = useState(true);
 
   function handleCommentChange(event) {
     setNewComment(event.target.value);
@@ -49,29 +50,42 @@ export default function CommentForm({
 
   if (error) return <Error message={error.err.response}></Error>;
   return (
-    <div className="container">
-      <form id="form" className="form" onSubmit={handleCommentSubmit}>
-        <textarea
-          id="textarea"
-          className={`comment-box ${!newComment && invalid ? "invalid" : ""}`}
-          placeholder="What are your thoughts?"
-          maxLength="10000"
-          onKeyDown={(event) => {
-            handleKeyPress(event, handleCommentSubmit);
-          }}
-          value={newComment}
-          onChange={handleCommentChange}
-          disabled={status !== "Submit" ? "disabled" : ""}
-        />
-        <div>
-          <button type="button" className="button cancel-button">
-            Cancel
-          </button>
-          <button onClick={handleCommentSubmit} className="button green">
-            {status}
+    <form id="form" className="form" onSubmit={handleCommentSubmit}>
+      <p>
+        Comment as <span style={{ color: "var(--red)" }}>anonymous</span>
+      </p>
+      <textarea
+        id="textarea"
+        className={`comment-box2 ${!newComment && invalid ? "invalid" : ""}`}
+        placeholder="What are your thoughts?"
+        maxLength="10000"
+        onKeyDown={(event) => {
+          handleKeyPress(event, handleCommentSubmit);
+        }}
+        value={newComment}
+        onChange={handleCommentChange}
+        disabled={status !== "Submit" ? "disabled" : ""}
+        rows="4"
+        cols="50"
+      />
+      <div className="comment-box-buttons">
+        <div className="btn-container">
+          <button
+            className={`comment-submit ${
+              newComment === "" ? "empty" : "unempty"
+            }`}
+          >
+            Comment
           </button>
         </div>
-      </form>
-    </div>
+      </div>
+
+      {/* <button type="button" className="button cancel-button">
+        Cancel
+      </button>
+      <button onClick={handleCommentSubmit} className="button green">
+        {status}
+      </button> */}
+    </form>
   );
 }
