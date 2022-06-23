@@ -1,11 +1,11 @@
-import "../css/CommentList.css";
-import { Error, SortTabs, Pagination, CommentForm } from ".";
+import "./CommentList.css";
+import { Error, SortTabs, Pagination, CommentForm, VoteButtons } from ".";
 import { patchComment } from "../api";
 import { UserContext } from "../contexts/UserContext";
 import { useFetchComments } from "../hooks";
 import { useParams } from "react-router-dom";
 import { useContext, useState } from "react";
-import { ThumbUpIcon, ThumbDownIcon, TrashIcon } from "../icons";
+import { UserIcon } from "../icons";
 
 export default function CommentList({
   article,
@@ -28,130 +28,58 @@ export default function CommentList({
   const { comments, setComments, error, setError, isLoading } =
     useFetchComments(article_id, params);
 
-  function handleClick(id, type) {
-    if (type === "upVote") {
-      if (!commentUpVoteClicked.bool && !commentDownVoteClicked.bool) {
-        setCommentUpVoteClicked({
-          bool: true,
-          id: id,
-        });
-        handleCommentVote(id, 1);
-      } else if (commentUpVoteClicked.bool && !commentDownVoteClicked.bool) {
-        setCommentUpVoteClicked({
-          bool: false,
-          id: "",
-        });
-        handleCommentVote(id, -1);
-      }
-    } else if (type === "downVote") {
-      if (!commentUpVoteClicked.bool && !commentDownVoteClicked.bool) {
-        setCommentDownVoteClicked({
-          bool: true,
-          id: id,
-        });
-        handleCommentVote(id, -1);
-      } else if (commentDownVoteClicked.bool && !commentUpVoteClicked.bool) {
-        setCommentDownVoteClicked({
-          bool: false,
-          id: "",
-        });
-        handleCommentVote(id, 1);
-      }
-    }
-  }
-
-  async function handleCommentVote(id, vote) {
-    setComments(
-      comments.map((comment) =>
-        comment.comment_id === id
-          ? { ...comment, votes: comment.votes + vote }
-          : comment
-      )
-    );
-    try {
-      await patchComment(id, vote);
-    } catch (err) {
-      setError({ err });
-    }
-  }
-
   if (error) return <Error message={error.err.response}></Error>;
   if (isLoading) return <></>;
   return (
-    <div className="comment-list-container">
-      <CommentForm
+    <>
+      {/* <CommentForm
         setParams={setParams}
         article={article}
         setArticle={setArticle}
         status={status}
         setStatus={setStatus}
-      />
-      <SortTabs categories={categories} params={params} setParams={setParams} />
-      <div className="comments-container">
-        <div className="comments-card">
-          {comments.forEach((comment) => console.log(comment.comment_id))}
-          {comments.map((comment) => (
-            <div className="comment-container" key={comment.comment_id}>
-              <div className="comment-author">
-                {comment.author} ·{" "}
-                <h4 className="comment-date">{comment.created_at}</h4>
+      /> */}
+      {/* <SortTabs categories={categories} params={params} setParams={setParams} /> */}
+
+      <div className="comment-list">
+        {comments.map((comment) => (
+          <div className="comment-card">
+            <div className="left-container">
+              <div>
+                <UserIcon className="comment-user-icon" />
               </div>
-              <div className="comment-body">{comment.body}</div>
-              <div className="comment-buttons-container">
-                <button
-                  id={`${comment.comment_id}UV`}
-                  aria-label="Up-vote button"
-                  disabled={
-                    commentDownVoteClicked.id === comment.comment_id
-                      ? "disabled"
-                      : ""
-                  }
-                  className={`comment-upvote ${
-                    commentUpVoteClicked.id === comment.comment_id
-                      ? "comment-upvote-clicked"
-                      : ""
-                  }`}
-                  onClick={() => handleClick(comment.comment_id, "upVote")}
-                >
-                  <ThumbUpIcon />
-                </button>
-                <button
-                  id={`${comment.comment_id}DV`}
-                  aria-label="Down-vote button"
-                  disabled={
-                    commentUpVoteClicked.id === comment.comment_id
-                      ? "disabled"
-                      : ""
-                  }
-                  className={`comment-downvote ${
-                    commentDownVoteClicked.id === comment.comment_id
-                      ? "comment-downvote-clicked"
-                      : ""
-                  }`}
-                  onClick={() => handleClick(comment.comment_id, "downVote")}
-                >
-                  <ThumbDownIcon id={comment.comment_id} aria-hidden="true" />
-                </button>
-                <button className="comment-votes">
-                  {comment.votes} {comment.votes === 1 ? "vote" : "votes"}
-                </button>
-                {comment.author === user ? (
-                  <button
-                    aria-label="Delete comment button"
-                    className="comment-trash-icon"
-                    onClick={() => {
-                      setOpen(true);
-                      setShowModal({ bool: true, type: comment.comment_id });
-                    }}
-                  >
-                    <TrashIcon />
-                  </button>
-                ) : null}
+
+              <button className="thread-button">
+                <div class="thread"></div>
+              </button>
+            </div>
+
+            <div className="right-container">
+              <h2>
+                {comment.author} ·{" "}
+                <span className="comment-details">
+                  {`on ${comment.created_at.substring(
+                    0,
+                    comment.created_at.indexOf("T")
+                  )}`}
+                </span>
+              </h2>
+
+              <div className="comment-body">
+                <p className="comment-body">{comment.body} ·</p>
+                <div className="comment-votes">
+                  <VoteButtons
+                    item={{ id: comment.comment_id, votes: comment.votes }}
+                    data={comments}
+                    setData={setComments}
+                  />
+                </div>
               </div>
             </div>
-          ))}
-        </div>
-        {/* <DeleteModal
+          </div>
+        ))}
+      </div>
+      {/* <DeleteModal
           showModal={showModal}
           setShowModal={setShowModal}
           open={open}
@@ -163,13 +91,12 @@ export default function CommentList({
           status={status}
           setStatus={setStatus}
         ></DeleteModal> */}
-        <Pagination
-          comments={comments}
-          filter={{ comment: article.comment_count }}
-          params={params}
-          setParams={setParams}
-        />
-      </div>
-    </div>
+      <Pagination
+        comments={comments}
+        filter={{ comment: article.comment_count }}
+        params={params}
+        setParams={setParams}
+      />
+    </>
   );
 }
