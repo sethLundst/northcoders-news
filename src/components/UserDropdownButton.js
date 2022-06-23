@@ -9,12 +9,12 @@ export default function UserDropdownButton({ open }) {
     limit: 1000,
     p: 1,
   });
-  const { username } = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   function getVotes() {
     let total = 0;
     for (let i = 0; i < articles.length; i++) {
-      if (articles.author === username) {
+      if (articles.author === user) {
         total += articles.votes;
       }
       return total;
@@ -28,7 +28,7 @@ export default function UserDropdownButton({ open }) {
           <UserIcon className="user" />
         </div>
         <div className="user-details">
-          <div className="user-name">{username}</div>
+          <div className="user-name">{user}</div>
           <div className="user-name2">
             <RatingIcon className="rating-icon" />
             {getVotes()} votes

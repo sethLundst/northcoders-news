@@ -1,26 +1,34 @@
 import { useState, useEffect } from "react";
-import { getVotes, postVote } from "../api";
+import { getVotes } from "../api";
 
 export default function useFetchVotes(username) {
-  const [votes, setVotes] = useState([]);
+  const [likes, setLikes] = useState({ upvotes: [], downvotes: [] });
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-
-  postVote(username, 1);
 
   useEffect(() => {
     async function fetchVotes() {
       try {
         const response = await getVotes(username);
-        setVotes(response.data);
-        console.log(response);
+        const likes = response.data.likes;
+        console.log("RUNNING FETCH VOTES");
+        const articlesLiked = likes
+          .filter((element) => element.like_dislike === 1)
+          .map((element) => element.article_id);
+
+        const articlesDisliked = likes
+          .filter((element) => element.like_dislike === 0)
+          .map((element) => element.article_id);
+
+        setLikes({ upvotes: articlesLiked, downvotes: articlesDisliked });
         setIsLoading(false);
       } catch (error) {
         setError({ error });
       }
     }
+
     fetchVotes();
   }, [username]);
 
-  return { votes, setVotes, error, isLoading };
+  return { likes, setLikes, error, isLoading };
 }

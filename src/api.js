@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const api = axios.create({
-  baseURL: "https://northcoders-news-database.herokuapp.com/",
+  baseURL: "https://nc-news-lundst.herokuapp.com/",
 });
 
 export function getArticle(id) {
@@ -30,10 +30,18 @@ export function getVotes(username) {
   return api.get(`/likes/${username}`);
 }
 
-export function postVote(username, article_id) {
+export function postVote(username, article_id, like_dislike) {
   return api.post(`/likes/${username}`, {
     article_id: article_id,
+    like_dislike: like_dislike,
   });
+}
+
+export function deleteVote(username, article_id) {
+  console.log(username, article_id);
+  const url = `/likes/${username}/${article_id}`;
+  console.log(url);
+  return api.delete(`/likes/${username}/${article_id}`);
 }
 
 export function postArticle(author, title, body, topic) {

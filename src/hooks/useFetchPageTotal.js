@@ -35,7 +35,6 @@ export default function useFetchPageTotal(filter, params) {
               pages: Math.ceil(response.data.articles.length / params.limit),
             });
         setIsLoading(false);
-        console.log(response);
       } catch (err) {
         setError({ err });
       }

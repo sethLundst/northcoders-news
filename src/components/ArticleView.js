@@ -1,7 +1,6 @@
 import "./ArticleView.css";
-import { CommentList, DeleteModal, Error } from ".";
+import { CommentList, DeleteModal, Error, ExpandButton, VoteButtons } from ".";
 import { patchArticle } from "../api";
-import { ExpandButton } from ".";
 import { UserContext } from "../contexts/UserContext";
 import { useFetchArticle } from "../hooks";
 import { useContext, useEffect, useState } from "react";
@@ -39,16 +38,7 @@ export default function ArticleView({
   const user = useContext(UserContext);
   const [open, setOpen] = useState(true);
   const [showModal, setShowModal] = useState({ bool: false, type: null });
-  console.log(articles);
-  // const voteParams = [
-  //   articlesUpvoted,
-  //   articlesDownvoted,
-  //   setArticlesUpvoted,
-  //   setArticlesDownvoted,
-  //   articles,
-  //   setArticles,
-  //   patchArticle,
-  // ];
+
   if (error) return <Error message={error.err.response}></Error>;
   if (isLoading) return <></>;
   return (

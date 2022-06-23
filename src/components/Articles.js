@@ -1,42 +1,21 @@
 import "./Articles.css";
-import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { getArticle, patchArticle } from "../api";
-import { ExpandButton, Pagination, Tabs } from "../components";
-import { UserContext } from "../contexts/UserContext";
-import { Loading } from "../components";
+import {
+  ExpandButton,
+  Loading,
+  Pagination,
+  Tabs,
+  VoteButtons,
+} from "../components";
 import { useFetchArticles } from "../hooks";
-import { ArrowUpIcon, ArrowDownIcon } from "../icons";
-import { handleVote } from "../utils";
-import useFetchVotes from "../hooks/useFetchVotes";
 
 function Articles({ filter, setFilter, params, setParams, selected }) {
-  const { username } = useContext(UserContext);
-  const { articles, setArticles, error, isLoading } = useFetchArticles(params);
-  // const { votes, setVotes } = useFetchVotes(username);
   const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   const articlesUpvoted = localStorage.getItem("articlesUpvoted");
-  //   const articlesDownvoted = localStorage.getItem("articlesDownvoted");
-  //   if (articlesUpvoted) {
-  //     setArticlesUpvoted(JSON.parse(articlesUpvoted));
-  //   }
-  //   if (articlesDownvoted) {
-  //     setArticlesDownvoted(JSON.parse(articlesDownvoted));
-  //   }
-  // }, [setArticlesUpvoted, setArticlesDownvoted]);
-
-  // useEffect(() => {
-  //   localStorage.setItem("articlesUpvoted", JSON.stringify(articlesUpvoted));
-  //   localStorage.setItem(
-  //     "articlesDownvoted",
-  //     JSON.stringify(articlesDownvoted)
-  //   );
-  // });
+  const { articles, setArticles, error, isLoading } = useFetchArticles(params);
 
   if (error) navigate("/error", { state: error.data });
   if (isLoading) return <Loading />;
+
   return (
     <>
       {/* <Tabs
@@ -50,32 +29,11 @@ function Articles({ filter, setFilter, params, setParams, selected }) {
           <Link to={`/articles/${article.article_id}`} key={article.article_id}>
             <div className="article-card">
               <div className="article-votes">
-                <button
-                  onClick={(event) => {
-                    // handleVote(event, article.article_id, ...voteParams, true);
-                  }}
-                >
-                  <ArrowUpIcon
-                  // className={`article-vote upvote${
-                  //   votes.includes(article.article_id) ? "-clicked" : ""
-                  // }`}
-                  />
-                </button>
-
-                <p className="article-vote-count">{article.votes}</p>
-                <button
-                  onClick={(event) => {
-                    // handleVote(event, article.article_id, ...voteParams);
-                  }}
-                >
-                  <ArrowDownIcon
-                  // className={`article-vote downvote${
-                  //   articlesDownvoted.includes(article.article_id)
-                  //     ? "-clicked"
-                  //     : ""
-                  // }`}
-                  />
-                </button>
+                <VoteButtons
+                  item={article}
+                  data={articles}
+                  setData={setArticles}
+                ></VoteButtons>
               </div>
               <div className="collapsible">
                 <ExpandButton id={article.article_id}>

@@ -17,6 +17,7 @@ import TopicDropdown from "./TopicDropdown";
 import TopicDropdownButton from "./TopicDropdownButton";
 import UserDropdown from "./UserDropdown";
 import UserDropdownButton from "./UserDropdownButton";
+import VoteButtons from "./VoteButtons";
 
 export {
   Articles,
@@ -38,4 +39,5 @@ export {
   TopicDropdownButton,
   UserDropdown,
   UserDropdownButton,
+  VoteButtons,
 };
