@@ -8,9 +8,12 @@ import {
   VoteButtons,
 } from "../components";
 import { useFetchArticles } from "../hooks";
+import { ParamsContext } from "../contexts/ParamsContext";
+import { useContext } from "react";
 
-function Articles({ filter, setFilter, params, setParams, selected }) {
+function Articles() {
   const navigate = useNavigate();
+  const { params } = useContext(ParamsContext);
   const { articles, setArticles, error, isLoading } = useFetchArticles(params);
 
   if (error) navigate("/error", { state: error.data });
@@ -30,10 +33,10 @@ function Articles({ filter, setFilter, params, setParams, selected }) {
             <div className="article-card">
               <div className="article-votes">
                 <VoteButtons
-                  item={article}
+                  item={{ id: article.article_id, votes: article.votes }}
                   data={articles}
                   setData={setArticles}
-                ></VoteButtons>
+                />
               </div>
               <div className="collapsible">
                 <ExpandButton id={article.article_id}>
@@ -64,12 +67,7 @@ function Articles({ filter, setFilter, params, setParams, selected }) {
           </Link>
         ))}
       </div>
-      <Pagination
-        articles={articles}
-        params={params}
-        setParams={setParams}
-        filter={filter}
-      />
+      <Pagination articles={articles} />
     </>
   );
 }

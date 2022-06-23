@@ -4,12 +4,12 @@ const votesReducer = (state, action) => {
   const { type, id, payload, user } = action;
 
   switch (type) {
-    // case "INITIALIZE_VOTES":
-    //   return {
-    //     ...state,
-    //     upvotes: payload.upvotes,
-    //     downvotes: payload.downvotes,
-    //   };
+    case "INITIALIZE_VOTES":
+      return {
+        ...state,
+        upvotes: payload.upvotes,
+        downvotes: payload.downvotes,
+      };
 
     case "ADD_UPVOTE":
       return {

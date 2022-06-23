@@ -3,17 +3,16 @@ import "./Pagination.css";
 import { useFetchPageTotal } from "../hooks";
 import { ChevronRightIcon, ChevronLeftIcon } from "../icons";
 import { useNavigate } from "react-router-dom";
+import { ParamsContext } from "../contexts/ParamsContext";
+import { useContext } from "react";
 
-export default function Pagination({
-  articles,
-  comments,
-  filter,
-  params,
-  setParams,
-}) {
+export default function Pagination({ articles, comments }) {
   const elements = articles === undefined ? comments : articles;
+  const { filter, params, setParams } = useContext(ParamsContext);
   const { pageTotal, error, isLoading } = useFetchPageTotal(filter, params);
   const navigate = useNavigate();
+
+  console.log(filter, params);
 
   const pages = [];
   for (let i = 1; i <= pageTotal.pages; i++) {

@@ -10,7 +10,7 @@ import {
 } from ".";
 import { Logo } from "../icons";
 
-export default function Navbar({ params, setParams, selected, setSelected }) {
+export default function Navbar() {
   return (
     <header>
       <div className="header-container">
@@ -20,13 +20,8 @@ export default function Navbar({ params, setParams, selected, setSelected }) {
         </Link>
 
         <nav>
-          <Dropdown icon={<TopicDropdownButton selected={selected} />}>
-            <TopicDropdown
-              params={params}
-              setParams={setParams}
-              selected={selected}
-              setSelected={setSelected}
-            />
+          <Dropdown icon={<TopicDropdownButton />}>
+            <TopicDropdown />
           </Dropdown>
 
           <Search />

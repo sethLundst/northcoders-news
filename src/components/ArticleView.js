@@ -2,7 +2,8 @@ import "./ArticleView.css";
 import { CommentList, DeleteModal, Error, ExpandButton, VoteButtons } from ".";
 import { patchArticle } from "../api";
 import { UserContext } from "../contexts/UserContext";
-import { useFetchArticle } from "../hooks";
+import { ParamsContext } from "../contexts/ParamsContext";
+import { useFetchArticle, useFetchArticles } from "../hooks";
 import { useContext, useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import {
@@ -15,26 +16,11 @@ import {
 } from "../icons";
 import { handleVote } from "../utils";
 
-export default function ArticleView({
-  articles,
-  setArticles,
-  articlesUpvoted,
-  articlesDownvoted,
-  setArticlesUpvoted,
-  setArticlesDownvoted,
-}) {
+export default function ArticleView() {
   const { article_id } = useParams();
-  const voteParams = [
-    articlesUpvoted,
-    articlesDownvoted,
-    setArticlesUpvoted,
-    setArticlesDownvoted,
-    articles,
-    setArticles,
-    patchArticle,
-  ];
-  const { article, setArticle, error, setError, isLoading } =
-    useFetchArticle(article_id);
+  const { params } = useContext(ParamsContext);
+  const { articles, setArticles } = useFetchArticles(params);
+  const { article, setArticle, error, isLoading } = useFetchArticle(article_id);
   const user = useContext(UserContext);
   const [open, setOpen] = useState(true);
   const [showModal, setShowModal] = useState({ bool: false, type: null });
@@ -45,30 +31,11 @@ export default function ArticleView({
     <div>
       <div className="article-view-card">
         <div className="article-view-votes">
-          <button
-            onClick={(event) => {
-              handleVote(event, article.article_id, ...voteParams, true);
-            }}
-          >
-            <ArrowUpIcon
-              className={`article-vote upvote${
-                articlesUpvoted.includes(article.article_id) ? "-clicked" : ""
-              }`}
-            />
-          </button>
-
-          <p className="article-vote-count">{article.votes}</p>
-          <button
-            onClick={(event) => {
-              handleVote(event, article.article_id, ...article);
-            }}
-          >
-            <ArrowDownIcon
-              className={`article-vote downvote${
-                articlesDownvoted.includes(article.article_id) ? "-clicked" : ""
-              }`}
-            />
-          </button>
+          <VoteButtons
+            item={{ id: article.article_id, votes: article.votes }}
+            data={article}
+            setData={setArticle}
+          />
         </div>
 
         <div className="article-details-container">
@@ -78,10 +45,10 @@ export default function ArticleView({
               {" "}
               posted by{" "}
               <span className="article-author">{article.author} </span>
-              {`on ${article.created_at.substring(
+              {/* {`on ${article.created_at.substring(
                 0,
                 article.created_at.indexOf("T")
-              )}`}
+              )}`} */}
             </span>
           </h3>
         </div>

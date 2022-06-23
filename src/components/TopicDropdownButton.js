@@ -1,9 +1,12 @@
 import "./TopicDropdownButton.css";
 import { ChevronDown, Home } from "../icons";
 import { Coding, Cooking, Football } from "../icons";
-import { cloneElement } from "react";
+import { cloneElement, useContext } from "react";
+import { ParamsContext } from "../contexts/ParamsContext";
 
-export default function TopicDropdownButton({ open, selected }) {
+export default function TopicDropdownButton({ open }) {
+  const { selected } = useContext(ParamsContext);
+
   const icons = {
     all: <Home />,
     coding: <Coding />,

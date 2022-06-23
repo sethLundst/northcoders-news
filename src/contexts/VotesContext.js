@@ -8,21 +8,23 @@ const initialState = {
   upvotes: [],
   downvotes: [],
 };
+
 const VotesContext = createContext(initialState);
 
-export const VotesProvider = ({ children, likes }) => {
+export const VotesProvider = ({ children }) => {
   const { user } = useUser();
-  const [state, dispatch] = useReducer(votesReducer, likes);
-  console.log(state);
-  // useEffect(() => {
-  //   dispatch({
-  //     type: "INITIALIZE_VOTES",
-  //     payload: {
-  //       upvotes: likes.upvotes,
-  //       downvotes: likes.downvotes,
-  //     },
-  //   });
-  // }, [likes]);
+  const { likes } = useFetchVotes("anonymous");
+  const [state, dispatch] = useReducer(votesReducer, initialState);
+
+  useEffect(() => {
+    dispatch({
+      type: "INITIALIZE_VOTES",
+      payload: {
+        upvotes: likes.upvotes,
+        downvotes: likes.downvotes,
+      },
+    });
+  }, [likes]);
 
   const handleUpvote = (id, data, setData) => {
     const vote = state.downvotes.includes(id)
@@ -39,13 +41,18 @@ export const VotesProvider = ({ children, likes }) => {
     }
 
     patchArticle(id, vote);
-    setData(
-      data.map((element) =>
-        element.article_id === id
-          ? { ...element, votes: element.votes + vote }
-          : element
-      )
-    );
+
+    if (Array.isArray(data)) {
+      setData(
+        data.map((element) =>
+          element.article_id === id
+            ? { ...element, votes: element.votes + vote }
+            : element
+        )
+      );
+    } else {
+      setData({ ...data, votes: data.votes + vote });
+    }
 
     dispatch({
       type: type,
@@ -71,13 +78,20 @@ export const VotesProvider = ({ children, likes }) => {
     }
 
     patchArticle(id, vote);
-    setData(
-      data.map((element) =>
-        element.article_id === id
-          ? { ...element, votes: element.votes + vote }
-          : element
-      )
-    );
+
+    console.log(data.length, "<<<");
+
+    if (Array.isArray(data)) {
+      setData(
+        data.map((element) =>
+          element.article_id === id
+            ? { ...element, votes: element.votes + vote }
+            : element
+        )
+      );
+    } else {
+      setData({ ...data, votes: data.votes + vote });
+    }
 
     dispatch({
       type: type,
