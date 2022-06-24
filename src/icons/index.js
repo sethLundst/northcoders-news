@@ -1,3 +1,4 @@
+import { ReactComponent as AlertIcon } from "./alert-circle.svg";
 import { ReactComponent as ArrowUpIcon } from "./arrow-up-circle-outline.svg";
 import { ReactComponent as ArrowDownIcon } from "./arrow-down-circle-outline.svg";
 import { ReactComponent as BarChartIcon } from "./bar-chart.svg";
@@ -26,11 +27,12 @@ import { ReactComponent as StarIcon } from "./starORIG.svg";
 import { ReactComponent as SunIcon } from "./sun.svg";
 import { ReactComponent as ThumbDownIcon } from "./thumbs-down-outline.svg";
 import { ReactComponent as ThumbUpIcon } from "./thumbs-up-outline.svg";
-import { ReactComponent as TrashIcon } from "./trash-outline.svg";
+import { ReactComponent as TrashIcon } from "./trash.svg";
 import { ReactComponent as UserIcon } from "./person-outline.svg";
 import { ReactComponent as Logo } from "./logo.svg";
 
 export {
+  AlertIcon,
   ArrowUpIcon,
   ArrowDownIcon,
   BarChartIcon,

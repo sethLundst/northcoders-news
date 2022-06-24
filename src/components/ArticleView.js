@@ -31,7 +31,8 @@ export default function ArticleView() {
 
   return (
     <div>
-      <div className="article-view-card">
+      <div className="center" id="center"></div>
+      <div className="article-view-card" id="article-view-card">
         <div className="article-view-votes">
           <VoteButtons
             item={{ id: article.article_id, votes: article.votes }}

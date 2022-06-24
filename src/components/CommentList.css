@@ -19,6 +19,8 @@
   display: flex;
   flex-direction: row;
   margin-bottom: 0px;
+  margin-right: 40px;
+
   width: 100%;
 }
 
@@ -97,6 +99,7 @@
   font-weight: 400;
   padding-bottom: 30px;
   margin-left: 20px;
+  border: solid red 1px;
 }
 
 .comment-details {
@@ -107,10 +110,11 @@
   font-weight: 400;
 }
 
-.comment-votes {
+.comment-buttons {
   display: flex;
   margin-top: 10px;
   align-items: center;
+  border: solid red 1px;
 }
 
 h2 {

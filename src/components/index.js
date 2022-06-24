@@ -2,6 +2,7 @@ import Articles from "./Articles";
 import ArticleView from "./ArticleView";
 import CommentForm from "./CommentForm";
 import CommentList from "./CommentList";
+import DeleteButton from "./DeleteButton";
 import Dropdown from "./Dropdown";
 import Error from "./Error";
 import ExpandButton from "./ExpandButton";
@@ -24,6 +25,7 @@ export {
   ArticleView,
   CommentForm,
   CommentList,
+  DeleteButton,
   Dropdown,
   Error,
   ExpandButton,

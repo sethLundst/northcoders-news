@@ -1,5 +1,6 @@
 :root {
-  --red: rgb(217 61 43);
+  --logo-red: rgb(217 61 43);
+  --red: rgb(204 62 44);
   --yellow: rgb(250 204 21);
   --switch-blue: rgb(77 159 234);
 }
@@ -75,6 +76,7 @@ b {
   background-color: var(--bg-primary);
   overflow: auto;
   height: 100vh;
+  z-index: -1;
 }
 
 /*
