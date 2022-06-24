@@ -16,7 +16,11 @@ import { useLocation, useParams } from "react-router-dom";
 
 export default function ArticleView() {
   const { article_id } = useParams();
-  const { setParams } = useContext(ParamsContext);
+  // const { params, setParams } = useContext(ParamsContext);
+  const [params, setParams] = useState({
+    limit: 10,
+    p: 1,
+  });
   const { article, setArticle, error, isLoading } = useFetchArticle(article_id);
   const [open, setOpen] = useState(true);
   const [showModal, setShowModal] = useState({ bool: false, type: null });
@@ -60,7 +64,7 @@ export default function ArticleView() {
         status={status}
         setStatus={setStatus}
       />
-      <CommentList article={article} />
+      <CommentList article={article} params={params} setParams={setParams} />
     </div>
   );
 }

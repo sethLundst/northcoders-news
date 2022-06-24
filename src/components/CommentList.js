@@ -8,13 +8,10 @@ import { useContext, useState } from "react";
 import { UserIcon } from "../icons";
 import { ParamsContext } from "../contexts/ParamsContext";
 
-export default function CommentList({ article }) {
+export default function CommentList({ article, params, setParams }) {
   const { article_id } = useParams();
   const categories = ["Most Recent", "Oldest", "Most Votes", "Fewest Votes"];
-  const [params, setParams] = useState({
-    limit: 10,
-    p: 1,
-  });
+
   const user = useContext(UserContext);
 
   const [open, setOpen] = useState(true);

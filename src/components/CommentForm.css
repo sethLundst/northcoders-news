@@ -23,7 +23,7 @@
   width: auto;
   height: auto;
   min-height: 140px;
-  max-height: 240px;
+  max-height: 600px;
   border: 1px solid var(--border);
   border-bottom-style: none;
   border-bottom-width: 0px;

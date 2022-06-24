@@ -14,7 +14,7 @@ export default function CommentForm({
   setStatus,
 }) {
   const { article_id } = useParams();
-  const user = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const [error, setError] = useState(null);
   const [invalid, setInvalid] = useState(false);
   const [newComment, setNewComment] = useState("");
@@ -47,7 +47,7 @@ export default function CommentForm({
       });
     } else setInvalid(true);
   }
-
+  console.log(status);
   if (error) return <Error message={error.err.response}></Error>;
   return (
     <form id="form" className="form" onSubmit={handleCommentSubmit}>
