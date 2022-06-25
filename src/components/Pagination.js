@@ -15,8 +15,6 @@ export default function Pagination({
   const { pageTotal, error, isLoading } = useFetchPageTotal(filter, params);
   const navigate = useNavigate();
 
-  console.log(filter, params);
-
   const pages = [];
   for (let i = 1; i <= pageTotal.pages; i++) {
     pages.push(i);

@@ -6,6 +6,7 @@ import {
   Pagination,
   ExpandButton,
   VoteButtons,
+  DeleteButton,
   CommentForm,
 } from ".";
 import { UserContext } from "../contexts/UserContext";
@@ -58,14 +59,12 @@ export default function ArticleView() {
           <p className="article-body">{article.body}</p>
         </div>
       </div>
-      <CommentForm
-        setParams={setParams}
+      <CommentList
         article={article}
         setArticle={setArticle}
-        status={status}
-        setStatus={setStatus}
+        params={params}
+        setParams={setParams}
       />
-      <CommentList article={article} params={params} setParams={setParams} />
     </div>
   );
 }

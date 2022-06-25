@@ -9,6 +9,8 @@ import { useParams } from "react-router-dom";
 export default function CommentForm({
   article,
   setArticle,
+  comments,
+  setComments,
   setParams,
   status,
   setStatus,
@@ -45,6 +47,7 @@ export default function CommentForm({
         p: 1,
         clicked: "most recent",
       });
+      // setComments([...comments, {}]);
     } else setInvalid(true);
   }
   console.log(status);

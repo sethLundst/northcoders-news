@@ -16,7 +16,12 @@ import { useContext, useState } from "react";
 import { UserIcon } from "../icons";
 import { ParamsContext } from "../contexts/ParamsContext";
 
-export default function CommentList({ article, params, setParams }) {
+export default function CommentList({
+  article,
+  setArticle,
+  params,
+  setParams,
+}) {
   const { article_id } = useParams();
   const categories = ["Most Recent", "Oldest", "Most Votes", "Fewest Votes"];
 
@@ -32,11 +37,20 @@ export default function CommentList({ article, params, setParams }) {
   function handleClick() {
     console.log("SADHUIHQENFK");
   }
-
+  console.log(comments);
   if (error) return <Error message={error.err.response}></Error>;
   if (isLoading) return <></>;
   return (
     <div>
+      <CommentForm
+        comments={comments}
+        setComments={setComments}
+        setParams={setParams}
+        article={article}
+        setArticle={setArticle}
+        status={status}
+        setStatus={setStatus}
+      />
       {/* <SortTabs categories={categories} params={params} setParams={setParams} /> */}
       <div className="comment-list">
         {comments.map((comment) => (
@@ -72,18 +86,20 @@ export default function CommentList({ article, params, setParams }) {
                   />
 
                   {comment.author === user ? (
-                    <button
+                    <a
                       onClick={() => {
                         setBlur(true);
                       }}
                     >
                       <DeleteButton
+                        article={article}
+                        setArticle={setArticle}
                         item={{ comment: comment }}
-                        state={comments}
-                        setState={setComments}
+                        comments={comments}
+                        setComments={setComments}
                         setParams={setParams}
                       />
-                    </button>
+                    </a>
                   ) : (
                     ""
                   )}

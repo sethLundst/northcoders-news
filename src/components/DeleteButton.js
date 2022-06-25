@@ -5,23 +5,25 @@ import { AlertIcon, TrashIcon } from "../icons";
 import { deleteArticle, deleteComment } from "../api";
 import { useNavigate } from "react-router-dom";
 
-export default function DeleteButton({ item, state, setState, setParams }) {
+export default function DeleteButton({ article, setArticle, item, setParams }) {
   const ref = useRef();
   const [open, setOpen] = useState(false);
   useOnClickOutside(ref, () => {
     setOpen(false);
   });
 
-  function handleDelete() {
+  async function handleDelete() {
     if (Object.keys(item)[0] === "comment") {
-      console.log(item);
-      deleteComment(item.comment.comment_id);
-      setState([
-        ...state,
-        state.filter(
-          (element) => element.comment_id !== item.comment.comment_id
-        ),
-      ]);
+      await deleteComment(item.comment.comment_id);
+      setArticle({
+        ...article,
+        comment_count: Number(article.comment_count) - 1,
+      });
+      setParams({
+        limit: 10,
+        p: 1,
+        clicked: "most recent",
+      });
       setOpen(false);
     } else {
       deleteArticle(item.article_id);
