@@ -1,5 +1,5 @@
 import { Logo } from "../icons";
-import "./Loading.css";
+import "../styles/Loading.css";
 
 function Loading() {
   return (

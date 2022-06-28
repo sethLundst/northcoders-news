@@ -9,7 +9,7 @@ import {
 import { useParams } from "../contexts";
 import { useFetchArticles } from "../hooks";
 
-function Homepage() {
+function Home() {
   const navigate = useNavigate();
   const { params, setParams, filter, setFilter } = useParams();
   const { articles, setArticles, error, isLoading } = useFetchArticles(params);
@@ -38,4 +38,4 @@ function Homepage() {
   );
 }
 
-export default Homepage;
+export default Home;

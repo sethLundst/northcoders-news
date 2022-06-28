@@ -1,4 +1,4 @@
-import "./Error.css";
+import "../styles/Error.css";
 import { Logo } from "../icons";
 import { useNavigate } from "react-router-dom";
 

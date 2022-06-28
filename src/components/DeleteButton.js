@@ -1,9 +1,8 @@
-import "./DeleteButton.css";
-import { useEffect, useRef, useState } from "react";
+import "../styles/DeleteButton.css";
+import { useRef, useState } from "react";
 import { useOnClickOutside } from "../hooks";
 import { AlertIcon, TrashIcon } from "../icons";
 import { deleteArticle, deleteComment } from "../api";
-import { useNavigate } from "react-router-dom";
 
 export default function DeleteButton({ article, setArticle, item, setParams }) {
   const ref = useRef();

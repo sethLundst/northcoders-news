@@ -5,6 +5,7 @@ import {
   CommentForm,
   CommentList,
   Pagination,
+  SortTabs,
   VoteButtons,
 } from "../components";
 import { useFetchArticle, useFetchComments } from "../hooks";
@@ -19,6 +20,8 @@ function Post() {
   const [status, setStatus] = useState("Submit");
   const { article, setArticle, error, isLoading } = useFetchArticle(article_id);
   const { comments, setComments } = useFetchComments(article_id, params);
+
+  const categories = ["Most Recent", "Oldest", "Most Votes", "Fewest Votes"];
 
   if (error) navigate("/error", { state: error.data });
   if (isLoading) return <></>;
@@ -37,6 +40,7 @@ function Post() {
         status={status}
         setStatus={setStatus}
       />
+      <SortTabs categories={categories} params={params} setParams={setParams} />
       <CommentList
         article={article}
         setArticle={setArticle}

@@ -1,4 +1,4 @@
-import "./UserDropdown.css";
+import "../styles/UserDropdown.css";
 import { Switch } from ".";
 import { Settings, UserIcon } from "../icons";
 import { useTheme } from "../contexts/ThemeContext";

@@ -1,4 +1,4 @@
-import "./ArticleView.css";
+import "../styles/ArticleView.css";
 import { cloneElement } from "react";
 
 export default function ArticleView({ article, children }) {

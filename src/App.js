@@ -6,7 +6,7 @@ import {
   UserProvider,
   VotesProvider,
 } from "./contexts";
-import { Homepage, Post } from "./pages";
+import { Home, Post } from "./pages";
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
           <ParamsProvider>
             <Navbar />
             <Routes>
-              <Route path="/" element={<Homepage />} />
+              <Route path="/" element={<Home />} />
               <Route path="/:article_id" element={<Post />} />
               <Route path="/loading" />
               <Route path="/error" element={<Error />} />

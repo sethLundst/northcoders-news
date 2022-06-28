@@ -1,4 +1,4 @@
-import "./Switch.css";
+import "../styles/Switch.css";
 
 export default function Switch({ state, setState }) {
   function handleChange() {

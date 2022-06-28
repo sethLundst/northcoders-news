@@ -1,7 +1,7 @@
-import "./Articles.css";
+import "../styles/Articles.css";
 import { cloneElement } from "react";
 import { Link } from "react-router-dom";
-import { Collapsible } from "../components";
+import { Collapsible } from "./index";
 
 function Articles({ articles, children }) {
   return (

@@ -1,4 +1,4 @@
-import "./Pagination.css";
+import "../styles/Pagination.css";
 
 import { useFetchPageTotal } from "../hooks";
 import { ChevronRightIcon, ChevronLeftIcon } from "../icons";

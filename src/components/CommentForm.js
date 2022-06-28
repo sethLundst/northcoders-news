@@ -1,4 +1,4 @@
-import "./CommentForm.css";
+import "../styles/CommentForm.css";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { postComment } from "../api";
@@ -72,13 +72,6 @@ export default function CommentForm({
           </button>
         </div>
       </div>
-
-      {/* <button type="button" className="button cancel-button">
-        Cancel
-      </button>
-      <button onClick={handleCommentSubmit} className="button green">
-        {status}
-      </button> */}
     </form>
   );
 }

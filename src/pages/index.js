@@ -1,4 +1,4 @@
-import Homepage from "./Homepage";
+import Home from "./Home";
 import Post from "./Post";
 
-export { Homepage, Post };
+export { Home, Post };

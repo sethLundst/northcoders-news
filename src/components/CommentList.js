@@ -1,4 +1,4 @@
-import "./CommentList.css";
+import "../styles/CommentList.css";
 import { DeleteButton } from ".";
 import { useUser } from "../contexts";
 import { UserIcon } from "../icons";
@@ -14,10 +14,8 @@ export default function CommentList({
 }) {
   const { user } = useUser();
 
-  // const categories = ["Most Recent", "Oldest", "Most Votes", "Fewest Votes"];
   return (
     <div>
-      {/* <SortTabs categories={categories} params={params} setParams={setParams} /> */}
       <div className="comment-list">
         {comments.map((comment) => (
           <div className="comment-card" key={comment.comment_id}>

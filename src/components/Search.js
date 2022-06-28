@@ -1,4 +1,4 @@
-import "./Search.css";
+import "../styles/Search.css";
 import { useRef, useState } from "react";
 import { useFetchArticles, useOnClickOutside } from "../hooks";
 import { SearchIcon } from "../icons";
