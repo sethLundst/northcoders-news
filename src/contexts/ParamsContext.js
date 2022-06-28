@@ -1,8 +1,8 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
-export const ParamsContext = createContext();
+const ParamsContext = createContext();
 
-export function ParamsProvider({ children }) {
+function ParamsProvider({ children }) {
   const [selected, setSelected] = useState("All");
   const [filter, setFilter] = useState("");
   const [params, setParams] = useState({
@@ -18,3 +18,15 @@ export function ParamsProvider({ children }) {
     </ParamsContext.Provider>
   );
 }
+
+function useParams() {
+  const context = useContext(ParamsContext);
+
+  if (context === undefined) {
+    throw new Error("useParams must be used within ParamsContext");
+  }
+
+  return context;
+}
+
+export { ParamsProvider, useParams };

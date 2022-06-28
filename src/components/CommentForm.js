@@ -1,26 +1,22 @@
 import "./CommentForm.css";
-import { Error } from ".";
-import { postComment } from "../api";
-import { UserContext } from "../contexts/UserContext";
-import { handleKeyPress } from "../utils";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
+import { postComment } from "../api";
+import { useUser } from "../contexts";
+import { handleKeyPress } from "../utils";
 
 export default function CommentForm({
   article,
   setArticle,
-  comments,
-  setComments,
   setParams,
   status,
   setStatus,
 }) {
   const { article_id } = useParams();
-  const { user } = useContext(UserContext);
-  const [error, setError] = useState(null);
+  const { user } = useUser();
+
   const [invalid, setInvalid] = useState(false);
   const [newComment, setNewComment] = useState("");
-  const [empty, setEmpty] = useState(true);
 
   function handleCommentChange(event) {
     setNewComment(event.target.value);
@@ -31,11 +27,7 @@ export default function CommentForm({
     event.preventDefault();
     if (newComment) {
       setStatus("Submitting...");
-      try {
-        await postComment(article_id, newComment, user);
-      } catch (err) {
-        setError({ err });
-      }
+      await postComment(article_id, newComment, user);
       setStatus("Submitted");
       setArticle({
         ...article,
@@ -47,11 +39,9 @@ export default function CommentForm({
         p: 1,
         clicked: "most recent",
       });
-      // setComments([...comments, {}]);
     } else setInvalid(true);
   }
-  console.log(status);
-  if (error) return <Error message={error.err.response}></Error>;
+
   return (
     <form id="form" className="form" onSubmit={handleCommentSubmit}>
       <p>

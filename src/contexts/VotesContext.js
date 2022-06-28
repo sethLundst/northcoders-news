@@ -1,124 +1,120 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
-import votesReducer from "./votesReducer";
-import useFetchVotes from "../hooks/useFetchVotes";
-import useUser from "./UserContext";
-import { patchArticle, postVote, deleteVote } from "../api";
+import {
+  patchArticle,
+  patchComment,
+  postArticleVote,
+  postCommentVote,
+  deleteArticleVote,
+  deleteCommentVote,
+} from "../api";
+import { useFetchVotes } from "../hooks";
+import { useUser } from "./UserContext";
+import { votesReducer } from "./votesReducer";
 
 const initialState = {
-  upvotes: [],
-  downvotes: [],
+  articleVotes: {
+    upvotes: [],
+    downvotes: [],
+  },
+  commentVotes: {
+    upvotes: [],
+    downvotes: [],
+  },
 };
 
 const VotesContext = createContext(initialState);
 
 export const VotesProvider = ({ children }) => {
   const { user } = useUser();
-  const { likes } = useFetchVotes("anonymous");
+  const { votes } = useFetchVotes(user);
   const [state, dispatch] = useReducer(votesReducer, initialState);
 
   useEffect(() => {
     dispatch({
       type: "INITIALIZE_VOTES",
-      payload: {
-        upvotes: likes.upvotes,
-        downvotes: likes.downvotes,
-      },
+      payload: votes,
     });
-  }, [likes]);
+  }, [votes]);
 
-  const handleUpvote = (id, data, setData) => {
-    const vote = state.downvotes.includes(id)
-      ? 2
-      : state.upvotes.includes(id)
-      ? -1
-      : 1;
-    const type = state.upvotes.includes(id) ? "REMOVE_UPVOTE" : "ADD_UPVOTE";
+  async function handleVote(isUpvote, id, data, setData, dataType) {
+    console.log(dataType);
+    const isArticleVote = dataType === "article";
+    const post = isArticleVote ? postArticleVote : postCommentVote;
+    const patch = isArticleVote ? patchArticle : patchComment;
+    const del = isArticleVote ? deleteArticleVote : deleteCommentVote;
+    const votes = isArticleVote ? state.articleVotes : state.commentVotes;
+    const isUpvoted = votes.upvotes.includes(id);
+    const isDownvoted = votes.downvotes.includes(id);
+    const item = isArticleVote ? "ARTICLE" : "COMMENT";
+    let type = "";
 
-    if (state.upvotes.includes(id)) {
-      deleteVote(user, id);
-    } else {
-      postVote(user, id, 1);
+    function render(vote) {
+      if (Array.isArray(data)) {
+        setData(
+          data.map((element) =>
+            element[`${item.toLowerCase()}_id`] === id
+              ? { ...element, votes: element.votes + vote }
+              : element
+          )
+        );
+      } else {
+        setData({ ...data, votes: data.votes + vote });
+      }
     }
 
-    patchArticle(id, vote);
-
-    if (Array.isArray(data)) {
-      setData(
-        data.map((element) =>
-          element.article_id === id
-            ? { ...element, votes: element.votes + vote }
-            : element
-        )
-      );
+    if (isUpvote) {
+      if (isUpvoted) {
+        render(-1);
+        del(user, id);
+        patch(id, -1);
+        type = `REMOVE_${item}_UPVOTE`;
+      } else if (isDownvoted) {
+        render(2);
+        post(user, id, 1);
+        patch(id, 2);
+        type = `ADD_${item}_UPVOTE`;
+      } else {
+        render(1);
+        post(user, id, 1);
+        patch(id, 1);
+        type = `ADD_${item}_UPVOTE`;
+      }
+      dispatch({
+        type: type,
+        id: id,
+      });
     } else {
-      setData({ ...data, votes: data.votes + vote });
+      if (isDownvoted) {
+        render(1);
+        del(user, id);
+        patch(id, 1);
+        type = `REMOVE_${item}_DOWNVOTE`;
+      } else if (isUpvoted) {
+        render(-2);
+        post(user, id, 0);
+        patch(id, -2);
+        type = `ADD_${item}_DOWNVOTE`;
+      } else {
+        render(-1);
+        post(user, id, 0);
+        patch(id, -1);
+        type = `ADD_${item}_DOWNVOTE`;
+      }
+      dispatch({
+        type: type,
+        id: id,
+      });
     }
-
-    dispatch({
-      type: type,
-      id: id,
-      user: user,
-    });
-  };
-
-  const handleDownvote = (id, data, setData) => {
-    const vote = state.upvotes.includes(id)
-      ? -2
-      : state.downvotes.includes(id)
-      ? 1
-      : -1;
-    const type = state.downvotes.includes(id)
-      ? "REMOVE_DOWNVOTE"
-      : "ADD_DOWNVOTE";
-
-    if (state.downvotes.includes(id)) {
-      deleteVote(user, id);
-    } else {
-      postVote(user, id, 0);
-    }
-
-    patchArticle(id, vote);
-
-    console.log(data.length, "<<<");
-
-    if (Array.isArray(data)) {
-      setData(
-        data.map((element) =>
-          element.article_id === id
-            ? { ...element, votes: element.votes + vote }
-            : element
-        )
-      );
-    } else {
-      setData({ ...data, votes: data.votes + vote });
-    }
-
-    dispatch({
-      type: type,
-      id: id,
-      user: user,
-    });
-  };
+  }
 
   return (
-    <>
-      {state.upvotes && state.downvotes && (
-        <VotesContext.Provider
-          value={{
-            state,
-            dispatch,
-            handleUpvote,
-            handleDownvote,
-          }}
-        >
-          {children}
-        </VotesContext.Provider>
-      )}
-    </>
+    <VotesContext.Provider value={{ state, dispatch, handleVote }}>
+      {children}
+    </VotesContext.Provider>
   );
 };
 
-const useVotes = () => {
+export function useVotes() {
   const context = useContext(VotesContext);
 
   if (context === undefined) {
@@ -126,6 +122,4 @@ const useVotes = () => {
   }
 
   return context;
-};
-
-export default useVotes;
+}

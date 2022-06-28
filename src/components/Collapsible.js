@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useFetchArticle } from "../hooks";
 import { DocumentIcon, MaximiseIcon, MinimiseIcon } from "../icons";
 
-function ExpandButton({ children, id }) {
+function Collapsible({ children, id }) {
   const [isHovered, setIsHovered] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const { article } = useFetchArticle(id);
@@ -42,4 +42,4 @@ function ExpandButton({ children, id }) {
   );
 }
 
-export default ExpandButton;
+export default Collapsible;

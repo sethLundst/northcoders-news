@@ -1,14 +1,13 @@
 import "./TopicDropdown.css";
-import { cloneElement, useContext } from "react";
+import { cloneElement } from "react";
 import { useNavigate } from "react-router-dom";
-import { ParamsContext } from "../contexts/ParamsContext";
+import { useParams } from "../contexts";
 import { useFetchTopics } from "../hooks";
 import { Coding, Cooking, Football, Home } from "../icons";
 
 export default function TopicDropdown({ setOpen }) {
   const navigate = useNavigate();
-  const { params, setParams, selected, setSelected } =
-    useContext(ParamsContext);
+  const { params, setParams, selected, setSelected } = useParams();
   const { topics, error, isLoading } = useFetchTopics();
 
   function handleClick(topic) {
@@ -25,6 +24,7 @@ export default function TopicDropdown({ setOpen }) {
 
   if (error) navigate("/error", { state: error.data });
   if (isLoading) return <></>;
+
   return (
     <div className="topic-dropdown">
       <div className="topic-menu">

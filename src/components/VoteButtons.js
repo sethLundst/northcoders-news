@@ -1,9 +1,12 @@
-import useVotes from "../contexts/VotesContext";
+import { useVotes } from "../contexts";
 import { ArrowUpIcon, ArrowDownIcon } from "../icons";
 
-export default function VoteButtons({ item, data, setData }) {
-  const { state, handleUpvote, handleDownvote } = useVotes();
-  const { id, votes } = item;
+export default function VoteButtons({ id, votes, data, setData, type }) {
+  const { state, handleVote } = useVotes();
+  const { articleVotes, commentVotes } = state;
+
+  const { upvotes, downvotes } =
+    type === "articles" ? articleVotes : commentVotes;
 
   return (
     <>
@@ -11,13 +14,13 @@ export default function VoteButtons({ item, data, setData }) {
         id={id}
         onClick={(event) => {
           event.preventDefault();
-          handleUpvote(id, data, setData);
+          handleVote(true, id, data, setData, type);
         }}
       >
         <ArrowUpIcon
           id="upvote"
           className={`article-vote upvote${
-            state.upvotes.includes(id) ? "-clicked" : ""
+            upvotes.includes(id) ? "-clicked" : ""
           }`}
         />
       </button>
@@ -26,13 +29,13 @@ export default function VoteButtons({ item, data, setData }) {
         id={id}
         onClick={(event) => {
           event.preventDefault();
-          handleDownvote(id, data, setData);
+          handleVote(false, id, data, setData, type);
         }}
       >
         <ArrowDownIcon
           id="downvote"
           className={`article-vote downvote${
-            state.downvotes.includes(id) ? "-clicked" : ""
+            downvotes.includes(id) ? "-clicked" : ""
           }`}
         />
       </button>

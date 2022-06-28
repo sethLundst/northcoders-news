@@ -5,8 +5,8 @@ import useFetchArticlesByTopic from "./useFetchArticlesByTopic";
 import useFetchComments from "./useFetchComments";
 import useFetchPageTotal from "./useFetchPageTotal";
 import useFetchTopics from "./useFetchTopics";
+import useFetchVotes from "./useFetchVotes";
 import useOnClickOutside from "./useOnClickOutside";
-import useTheme from "./useTheme";
 
 export {
   useArticlePageTotal,
@@ -16,6 +16,6 @@ export {
   useFetchComments,
   useFetchPageTotal,
   useFetchTopics,
+  useFetchVotes,
   useOnClickOutside,
-  useTheme,
 };

@@ -1,7 +1,7 @@
 import "./UserDropdown.css";
 import { Switch } from ".";
-import { useTheme } from "../hooks";
 import { Settings, UserIcon } from "../icons";
+import { useTheme } from "../contexts/ThemeContext";
 
 export default function UserDropdown() {
   const { dark, setDark } = useTheme();

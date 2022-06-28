@@ -1,45 +1,16 @@
 import "./ArticleView.css";
-import {
-  CommentList,
-  DeleteModal,
-  Error,
-  Pagination,
-  ExpandButton,
-  VoteButtons,
-  DeleteButton,
-  CommentForm,
-} from ".";
-import { UserContext } from "../contexts/UserContext";
-import { ParamsContext } from "../contexts/ParamsContext";
-import { useFetchArticle, useFetchArticles, useFetchComments } from "../hooks";
-import { useContext, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { cloneElement } from "react";
 
-export default function ArticleView() {
-  const { article_id } = useParams();
-  // const { params, setParams } = useContext(ParamsContext);
-  const [params, setParams] = useState({
-    limit: 10,
-    p: 1,
-  });
-  const { article, setArticle, error, isLoading } = useFetchArticle(article_id);
-  const [open, setOpen] = useState(true);
-  const [showModal, setShowModal] = useState({ bool: false, type: null });
-  const [status, setStatus] = useState("Submit");
-
-  if (error) return <Error message={error.err.response}></Error>;
-  if (isLoading) return <></>;
-
+export default function ArticleView({ article, children }) {
   return (
     <div>
       <div className="center" id="center"></div>
       <div className="article-view-card" id="article-view-card">
         <div className="article-view-votes">
-          <VoteButtons
-            item={{ id: article.article_id, votes: article.votes }}
-            data={article}
-            setData={setArticle}
-          />
+          {cloneElement(children, {
+            id: article.article_id,
+            votes: article.votes,
+          })}
         </div>
         <div className="article-view-details">
           <h5>
@@ -55,16 +26,9 @@ export default function ArticleView() {
             </span>
           </h5>
           <h4 className="article-view-title">{article.title}</h4>
-
           <p className="article-body">{article.body}</p>
         </div>
       </div>
-      <CommentList
-        article={article}
-        setArticle={setArticle}
-        params={params}
-        setParams={setParams}
-      />
     </div>
   );
 }

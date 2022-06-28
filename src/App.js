@@ -1,18 +1,12 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
+import { Error, Navbar } from "./components";
 import {
-  Articles,
-  ArticleView,
-  Error,
-  Navbar,
+  ParamsProvider,
   ThemeProvider,
-  CommentList,
-} from "./components";
-import useUser, { UserProvider } from "./contexts/UserContext";
-import { VotesProvider } from "./contexts/VotesContext";
-import { ParamsProvider } from "./contexts/ParamsContext";
-import useFetchVotes from "./hooks/useFetchVotes";
+  UserProvider,
+  VotesProvider,
+} from "./contexts";
+import { Homepage, Post } from "./pages";
 
 function App() {
   return (
@@ -22,8 +16,8 @@ function App() {
           <ParamsProvider>
             <Navbar />
             <Routes>
-              <Route path="/" element={<Articles />} />
-              <Route path="/articles/:article_id" element={<ArticleView />} />
+              <Route path="/" element={<Homepage />} />
+              <Route path="/:article_id" element={<Post />} />
               <Route path="/loading" />
               <Route path="/error" element={<Error />} />
               <Route path="*" element={<Error />} />

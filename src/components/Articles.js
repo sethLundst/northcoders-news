@@ -1,45 +1,23 @@
 import "./Articles.css";
-import { Link, useNavigate } from "react-router-dom";
-import {
-  ExpandButton,
-  Loading,
-  Pagination,
-  Tabs,
-  VoteButtons,
-} from "../components";
-import { useFetchArticles } from "../hooks";
-import { ParamsContext } from "../contexts/ParamsContext";
-import { useContext } from "react";
+import { cloneElement } from "react";
+import { Link } from "react-router-dom";
+import { Collapsible } from "../components";
 
-function Articles() {
-  const navigate = useNavigate();
-  const { params, setParams, filter } = useContext(ParamsContext);
-  const { articles, setArticles, error, isLoading } = useFetchArticles(params);
-
-  if (error) navigate("/error", { state: error.data });
-  if (isLoading) return <Loading />;
-
+function Articles({ articles, children }) {
   return (
     <>
-      {/* <Tabs
-        filter={filter}
-        params={params}
-        setParams={setParams}
-        setFilter={setFilter}
-      /> */}
       <div className="article-list">
         {articles.map((article) => (
-          <Link to={`/articles/${article.article_id}`} key={article.article_id}>
+          <Link to={`/${article.article_id}`} key={article.article_id}>
             <div className="article-card">
               <div className="article-votes">
-                <VoteButtons
-                  item={{ id: article.article_id, votes: article.votes }}
-                  data={articles}
-                  setData={setArticles}
-                />
+                {cloneElement(children, {
+                  id: article.article_id,
+                  votes: article.votes,
+                })}
               </div>
               <div className="collapsible">
-                <ExpandButton id={article.article_id}>
+                <Collapsible id={article.article_id}>
                   <div className="article-link">
                     <div>
                       <h2 className="article-title">{article.title}</h2>
@@ -61,18 +39,12 @@ function Articles() {
                       </div>
                     </div>
                   </div>
-                </ExpandButton>
+                </Collapsible>
               </div>
             </div>
           </Link>
         ))}
       </div>
-      <Pagination
-        articles={articles}
-        params={params}
-        setParams={setParams}
-        filter={filter}
-      />
     </>
   );
 }

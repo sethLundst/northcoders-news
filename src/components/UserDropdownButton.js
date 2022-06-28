@@ -1,15 +1,17 @@
 import "./UserDropdownButton.css";
-import { useContext } from "react";
-import { UserContext } from "../contexts/UserContext";
-import { ChevronDown, MenuIcon, RatingIcon, UserIcon, Home } from "../icons";
+import { Loading } from ".";
+import { useUser } from "../contexts";
 import { useFetchArticles } from "../hooks";
+import { ChevronDown, MenuIcon, RatingIcon, UserIcon } from "../icons";
+import { useNavigate } from "react-router-dom";
 
 export default function UserDropdownButton({ open }) {
+  const navigate = useNavigate();
+  const { user } = useUser();
   const { articles, error, isLoading } = useFetchArticles({
     limit: 1000,
     p: 1,
   });
-  const { user } = useContext(UserContext);
 
   function getVotes() {
     let total = 0;
@@ -20,6 +22,9 @@ export default function UserDropdownButton({ open }) {
       return total;
     }
   }
+
+  if (error) navigate("/error", { state: error.data });
+  if (isLoading) return <Loading />;
 
   return (
     <div className="user-button-container">

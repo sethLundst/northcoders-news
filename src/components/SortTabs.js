@@ -1,6 +1,7 @@
-import "../css/SortTabs.css";
+import "./SortTabs.css";
 
-export default function SortTabs({ categories, params, setParams, theme }) {
+export default function SortTabs({ params, setParams }) {
+  const categories = ["Most Recent", "Oldest", "Most Votes", "Fewest Votes"];
   function handleSort(index) {
     setParams({
       ...params,

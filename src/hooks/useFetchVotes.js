@@ -1,26 +1,58 @@
 import { useState, useEffect } from "react";
 import { getVotes } from "../api";
 
-export default function useFetchVotes(username) {
-  const [likes, setLikes] = useState({ upvotes: [], downvotes: [] });
+export default function useFetchVotes(user) {
+  const [votes, setVotes] = useState({
+    articleVotes: {
+      upvotes: [],
+      downvotes: [],
+    },
+    commentVotes: {
+      upvotes: [],
+      downvotes: [],
+    },
+  });
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     async function fetchVotes() {
       try {
-        const response = await getVotes(username);
-        const likes = response.data.likes;
-        console.log("RUNNING FETCH VOTES");
-        const articlesLiked = likes
-          .filter((element) => element.like_dislike === 1)
-          .map((element) => element.article_id);
+        const response = await getVotes(user);
+        const votes = response.data.votes;
 
-        const articlesDisliked = likes
-          .filter((element) => element.like_dislike === 0)
-          .map((element) => element.article_id);
+        const upvotedArticles = [];
+        const downvotedArticles = [];
+        const upvotedComments = [];
+        const downvotedComments = [];
 
-        setLikes({ upvotes: articlesLiked, downvotes: articlesDisliked });
+        votes.articleVotes.forEach((vote) => {
+          if (vote.downvote_upvote === 1) {
+            upvotedArticles.push(vote.article_id);
+          } else {
+            downvotedArticles.push(vote.article_id);
+          }
+        });
+
+        votes.commentVotes.forEach((vote) => {
+          if (vote.downvote_upvote === 1) {
+            upvotedComments.push(vote.comment_id);
+          } else {
+            downvotedComments.push(vote.comment_id);
+          }
+        });
+
+        setVotes({
+          articleVotes: {
+            upvotes: upvotedArticles,
+            downvotes: downvotedArticles,
+          },
+          commentVotes: {
+            upvotes: upvotedComments,
+            downvotes: downvotedComments,
+          },
+        });
+
         setIsLoading(false);
       } catch (error) {
         setError({ error });
@@ -28,7 +60,7 @@ export default function useFetchVotes(username) {
     }
 
     fetchVotes();
-  }, [username]);
+  }, [user]);
 
-  return { likes, setLikes, error, isLoading };
+  return { votes, setVotes, error, isLoading };
 }

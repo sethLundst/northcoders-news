@@ -1,56 +1,22 @@
 import "./CommentList.css";
-
-import {
-  Error,
-  SortTabs,
-  Pagination,
-  CommentForm,
-  VoteButtons,
-  DeleteButton,
-} from ".";
-import { patchComment } from "../api";
-import { UserContext } from "../contexts/UserContext";
-import { useFetchComments } from "../hooks";
-import { useParams } from "react-router-dom";
-import { useContext, useState } from "react";
+import { DeleteButton } from ".";
+import { useUser } from "../contexts";
 import { UserIcon } from "../icons";
-import { ParamsContext } from "../contexts/ParamsContext";
+import { cloneElement } from "react";
 
 export default function CommentList({
   article,
   setArticle,
-  params,
+  comments,
+  setComments,
   setParams,
+  children,
 }) {
-  const { article_id } = useParams();
-  const categories = ["Most Recent", "Oldest", "Most Votes", "Fewest Votes"];
+  const { user } = useUser();
 
-  const { user } = useContext(UserContext);
-  const [blur, setBlur] = useState(false);
-
-  const [showModal, setShowModal] = useState({ bool: false, type: null });
-  const [status, setStatus] = useState("Submit");
-  const { comments, setComments, error, isLoading } = useFetchComments(
-    article_id,
-    params
-  );
-  function handleClick() {
-    console.log("SADHUIHQENFK");
-  }
-  console.log(comments);
-  if (error) return <Error message={error.err.response}></Error>;
-  if (isLoading) return <></>;
+  // const categories = ["Most Recent", "Oldest", "Most Votes", "Fewest Votes"];
   return (
     <div>
-      <CommentForm
-        comments={comments}
-        setComments={setComments}
-        setParams={setParams}
-        article={article}
-        setArticle={setArticle}
-        status={status}
-        setStatus={setStatus}
-      />
       {/* <SortTabs categories={categories} params={params} setParams={setParams} /> */}
       <div className="comment-list">
         {comments.map((comment) => (
@@ -69,37 +35,29 @@ export default function CommentList({
               <h2>
                 {comment.author} ·{" "}
                 <span className="comment-details">
-                  {/* {`on ${comment.created_at.substring(
+                  {`on ${comment.created_at.substring(
                     0,
                     comment.created_at.indexOf("T")
-                  )}`} */}
+                  )}`}
                 </span>
               </h2>
 
               <div className="comment-body">
                 <p className="comment-body">{comment.body} ·</p>
                 <div className="comment-buttons">
-                  <VoteButtons
-                    item={{ id: comment.comment_id, votes: comment.votes }}
-                    data={comments}
-                    setData={setComments}
-                  />
-
+                  {cloneElement(children, {
+                    id: comment.comment_id,
+                    votes: comment.votes,
+                  })}
                   {comment.author === user ? (
-                    <a
-                      onClick={() => {
-                        setBlur(true);
-                      }}
-                    >
-                      <DeleteButton
-                        article={article}
-                        setArticle={setArticle}
-                        item={{ comment: comment }}
-                        comments={comments}
-                        setComments={setComments}
-                        setParams={setParams}
-                      />
-                    </a>
+                    <DeleteButton
+                      article={article}
+                      setArticle={setArticle}
+                      item={{ comment: comment }}
+                      comments={comments}
+                      setComments={setComments}
+                      setParams={setParams}
+                    />
                   ) : (
                     ""
                   )}
@@ -109,25 +67,6 @@ export default function CommentList({
           </div>
         ))}
       </div>
-
-      <Pagination
-        comments={comments}
-        filter={{ comment: article.comment_count }}
-        params={params}
-        setParams={setParams}
-      />
-      {/* <DeleteModal
-          showModal={showModal}
-          setShowModal={setShowModal}
-          open={open}
-          setOpen={setOpen}
-          article={article}
-          setArticle={setArticle}
-          setError={setError}
-          setParams={setParams}
-          status={status}
-          setStatus={setStatus}
-        ></DeleteModal> */}
     </div>
   );
 }

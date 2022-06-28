@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const api = axios.create({
-  baseURL: "https://nc-news-lundst.herokuapp.com/",
+  baseURL: "https://nc-news-lundst.herokuapp.com",
 });
 
 export function getArticle(id) {
@@ -27,21 +27,29 @@ export function getComments(id, params) {
 }
 
 export function getVotes(username) {
-  return api.get(`/likes/${username}`);
+  return api.get(`/votes/${username}`);
 }
 
-export function postVote(username, article_id, like_dislike) {
-  return api.post(`/likes/${username}`, {
+export function postArticleVote(username, article_id, downvote_upvote) {
+  return api.post(`/votes/${username}/articles`, {
     article_id: article_id,
-    like_dislike: like_dislike,
+    downvote_upvote: downvote_upvote,
   });
 }
 
-export function deleteVote(username, article_id) {
-  console.log(username, article_id);
-  const url = `/likes/${username}/${article_id}`;
-  console.log(url);
-  return api.delete(`/likes/${username}/${article_id}`);
+export function postCommentVote(username, comment_id, downvote_upvote) {
+  return api.post(`/votes/${username}/comments`, {
+    comment_id: comment_id,
+    downvote_upvote: downvote_upvote,
+  });
+}
+
+export function deleteArticleVote(username, article_id) {
+  return api.delete(`/votes/${username}/${article_id}/articles`);
+}
+
+export function deleteCommentVote(username, comment_id) {
+  return api.delete(`/votes/${username}/${comment_id}/comments`);
 }
 
 export function postArticle(author, title, body, topic) {

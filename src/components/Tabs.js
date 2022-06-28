@@ -11,7 +11,7 @@ import {
 export default function Tabs({ setFilter, params, setParams }) {
   const [active, setActive] = useState("New");
   const [isDesc, setIsDesc] = useState(true);
-  const categories = ["New", "Popular", "Most Comments"];
+  // const categories = ["New", "Popular", "Most Comments"];
 
   function handleFilter(event) {
     setFilter(event.target.value);
@@ -42,9 +42,7 @@ export default function Tabs({ setFilter, params, setParams }) {
   function TabButton(props) {
     return (
       <button
-        class={`${
-          active === props.name ? "active " : ""
-        } tab-item font-bold py-2 px-4 rounded inline-flex items-center`}
+        className={`${active === props.name ? "active " : ""} tab-item `}
         onClick={() => {
           handleSort(props);
         }}
@@ -56,29 +54,29 @@ export default function Tabs({ setFilter, params, setParams }) {
   }
 
   return (
-    <div class="tabs card">
-      <div class="inline-block relative w-fit">
+    <div className="tabs">
+      {/* <div className="inline-block relative w-fit">
         <select
           onChange={(event) => {
             handleSort(event.target.value);
           }}
-          class="sort-select block appearance-none w-full h-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded-xl shadow leading-tight focus:outline-none focus:shadow-outline"
+          className="sort-select block appearance-none w-full h-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded-xl shadow leading-tight focus:outline-none focus:shadow-outline"
         >
           {categories.map((category, index) => (
             <option value={index}>{category}</option>
           ))}
         </select>
-        <div class="sort-icon pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+        <div className="sort-icon pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
           <svg
-            class="fill-current h-4 w-4"
+            className="fill-current h-4 w-4"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20"
           >
             <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
           </svg>
         </div>
-      </div>
-      <div className="tab-buttons flex">
+      </div> */}
+      <div className="tab-buttons">
         <TabButton name={"New"} icon={<StarIcon />} sort="created_at" />
         <TabButton name={"Popular"} icon={<BarChartIcon />} sort="votes" />
         <TabButton

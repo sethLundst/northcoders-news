@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react";
 
-export const UserContext = createContext();
+const UserContext = createContext();
 
 export function UserProvider({ children }) {
   const [user, setUser] = useState("anonymous");
@@ -12,7 +12,7 @@ export function UserProvider({ children }) {
   );
 }
 
-const useUser = () => {
+export function useUser() {
   const context = useContext(UserContext);
 
   if (context === undefined) {
@@ -20,6 +20,4 @@ const useUser = () => {
   }
 
   return context;
-};
-
-export default useUser;
+}
