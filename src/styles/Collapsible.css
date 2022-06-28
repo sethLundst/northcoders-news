@@ -1,0 +1,43 @@
+.collapsible {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  border-color: rgb(52, 52, 53);
+  border-left-width: 1px;
+}
+
+.clps-button {
+  float: left;
+  display: none;
+  padding: 8px;
+  margin-left: 5px;
+}
+
+.article-button:hover {
+  background: var(--highlighted);
+}
+
+.clps-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--text-gray);
+  fill: var(--text-gray);
+}
+
+.clps-preview {
+  display: flex;
+  height: auto;
+  min-height: 50px;
+  text-align: justify;
+  padding-right: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  flex-wrap: wrap;
+  align-items: left;
+}
+
+@media (min-width: 480px) {
+  .clps-button {
+    display: flex;
+  }
+}

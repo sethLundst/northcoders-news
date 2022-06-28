@@ -1,3 +1,4 @@
+import "../styles/Collapsible.css";
 import { useState } from "react";
 import { useFetchArticle } from "../hooks";
 import { DocumentIcon, MaximiseIcon, MinimiseIcon } from "../icons";
@@ -8,7 +9,7 @@ function Collapsible({ children, id }) {
   const { article } = useFetchArticle(id);
 
   return (
-    <>
+    <div className="collapsible">
       <div
         onMouseEnter={() => {
           setIsHovered(true);
@@ -18,7 +19,7 @@ function Collapsible({ children, id }) {
         }}
       >
         <button
-          className="article-button"
+          className="clps-button"
           onClick={(event) => {
             event.preventDefault();
             setIsHovered(false);
@@ -26,19 +27,19 @@ function Collapsible({ children, id }) {
           }}
         >
           {!isHovered && !isCollapsed ? (
-            <DocumentIcon className="article-icon" />
+            <DocumentIcon className="clps-icon" />
           ) : isHovered && isCollapsed ? (
-            <MinimiseIcon className="article-icon" />
+            <MinimiseIcon className="clps-icon" />
           ) : (
-            <MaximiseIcon className="article-icon" />
+            <MaximiseIcon className="clps-icon" />
           )}
         </button>
       </div>
       <div>
         {children}
-        {isCollapsed ? <p className="article-preview">{article.body}</p> : ""}
+        {isCollapsed ? <p className="clps-preview">{article.body}</p> : ""}
       </div>
-    </>
+    </div>
   );
 }
 

@@ -115,14 +115,6 @@
   align-items: center;
 }
 
-h2 {
-  line-height: 1.25rem;
-  font-size: 14px;
-  font-weight: 500;
-  padding-bottom: 3px;
-  letter-spacing: 0px;
-}
-
 .comment-body {
   color: var(--text);
   font-size: 12px;
@@ -132,14 +124,4 @@ h2 {
 .comment-author {
   color: var(--red);
   font-size: 0.8rem;
-}
-ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-p {
-  line-height: 1.25rem;
-  font-size: 0.875rem;
 }

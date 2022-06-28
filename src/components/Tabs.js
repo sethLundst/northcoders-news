@@ -1,17 +1,28 @@
 import "../styles/Tabs.css";
-import { useState } from "react";
+import { cloneElement, useRef, useState } from "react";
+import { Dropdown, TopicDropdown, TopicDropdownButton } from ".";
+import { useOnClickOutside } from "../hooks";
 import {
   ArrowUpIcon,
   ArrowDownIcon,
   BarChartIcon,
+  ChevronDown,
   MessageIcon,
   StarIcon,
+  SearchIcon,
 } from "../icons";
 
 export default function Tabs({ setFilter, params, setParams }) {
+  const ref = useRef();
   const [active, setActive] = useState("New");
   const [isDesc, setIsDesc] = useState(true);
+  const [open, setOpen] = useState(false);
   // const categories = ["New", "Popular", "Most Comments"];
+  const icons = {
+    new: <StarIcon />,
+    popular: <BarChartIcon />,
+    most_comments: <MessageIcon />,
+  };
 
   function handleFilter(event) {
     setFilter(event.target.value);
@@ -39,11 +50,16 @@ export default function Tabs({ setFilter, params, setParams }) {
     }
   }
 
+  useOnClickOutside(ref, () => {
+    setOpen(false);
+  });
+
   function TabButton(props) {
     return (
       <button
         className={`${active === props.name ? "active " : ""} tab-item `}
         onClick={() => {
+          setOpen(false);
           handleSort(props);
         }}
       >
@@ -55,25 +71,77 @@ export default function Tabs({ setFilter, params, setParams }) {
 
   return (
     <div className="tabs">
-      <div className="tab-buttons">
-        <TabButton name={"New"} icon={<StarIcon />} sort="created_at" />
-        <TabButton name={"Popular"} icon={<BarChartIcon />} sort="votes" />
-        <TabButton
-          name={"Most Comments"}
-          icon={<MessageIcon />}
-          sort="comment_count"
-        />
+      <div className="mobile-tabs" ref={ref}>
+        <Dropdown icon={<TopicDropdownButton />}>
+          <TopicDropdown />
+        </Dropdown>
+        <button
+          className={`tb-drpd-btn ${open ? "open" : ""}`}
+          onClick={() => {
+            setOpen(!open);
+          }}
+        >
+          {active === "New" ? (
+            <StarIcon className="home" />
+          ) : (
+            cloneElement(icons[active.toLowerCase().replace(/\s/g, "_")], {
+              className: "icon",
+            })
+          )}
+          <div className="topic">{active}</div>
+          <ChevronDown className="topic-chevron" />
+          {open ? (
+            <div className="tb-drpd">
+              <div className="tb-drpd-menu">
+                <TabButton name={"New"} icon={<StarIcon />} sort="created_at" />
+                <TabButton
+                  name={"Popular"}
+                  icon={<BarChartIcon />}
+                  sort="votes"
+                />
+                <TabButton
+                  name={"Most Comments"}
+                  icon={<MessageIcon />}
+                  sort="comment_count"
+                />
+              </div>
+            </div>
+          ) : (
+            ""
+          )}
+        </button>
       </div>
-      <input
-        className="tab-search"
-        placeholder="Search articles by user..."
-        onChange={handleFilter}
-      ></input>
-      <TabButton
-        name={isDesc ? "Descending" : "Ascending"}
-        icon={isDesc ? <ArrowDownIcon /> : <ArrowUpIcon />}
-        sort="order"
-      />
+
+      <div className="desktop-tabs">
+        <div className="tab-buttons">
+          <TabButton name={"New"} icon={<StarIcon />} sort="created_at" />
+          <TabButton name={"Popular"} icon={<BarChartIcon />} sort="votes" />
+          <TabButton
+            name={"Most Comments"}
+            icon={<MessageIcon />}
+            sort="comment_count"
+          />
+        </div>
+
+        <div className="tablet-tabs">
+          <div className="tab-search">
+            <div className="tab-search-icon">
+              <SearchIcon className="tab-search-svg" />
+            </div>
+            <input
+              type="search"
+              className="tab-search-box"
+              placeholder="Filter articles by user..."
+              onChange={handleFilter}
+            />
+          </div>
+          <TabButton
+            name={isDesc ? "Descending" : "Ascending"}
+            icon={isDesc ? <ArrowDownIcon /> : <ArrowUpIcon />}
+            sort="order"
+          />
+        </div>
+      </div>
     </div>
   );
 }

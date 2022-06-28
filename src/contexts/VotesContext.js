@@ -37,7 +37,6 @@ export const VotesProvider = ({ children }) => {
   }, [votes]);
 
   async function handleVote(isUpvote, id, data, setData, dataType) {
-    console.log(dataType);
     const isArticleVote = dataType === "article";
     const post = isArticleVote ? postArticleVote : postCommentVote;
     const patch = isArticleVote ? patchArticle : patchComment;

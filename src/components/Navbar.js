@@ -27,11 +27,10 @@ export default function Navbar() {
           <Search />
 
           <button className="new-article">Post Article</button>
-
-          <Dropdown icon={<UserDropdownButton />}>
-            <UserDropdown />
-          </Dropdown>
         </nav>
+        <Dropdown icon={<UserDropdownButton />}>
+          <UserDropdown />
+        </Dropdown>
       </div>
     </header>
   );
