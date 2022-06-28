@@ -2,7 +2,7 @@ import "../styles/UserDropdownButton.css";
 import { Loading } from ".";
 import { useUser } from "../contexts";
 import { useFetchArticles } from "../hooks";
-import { ChevronDown, MenuIcon, RatingIcon, UserIcon } from "../icons";
+import { ChevronDown, RatingIcon, UserIcon } from "../icons";
 import { useNavigate } from "react-router-dom";
 
 export default function UserDropdownButton({ open }) {
@@ -40,7 +40,6 @@ export default function UserDropdownButton({ open }) {
           </div>
         </div>
         <ChevronDown className="user-chevron2" />
-        <MenuIcon className="menu-icon" />
       </button>
     </div>
   );

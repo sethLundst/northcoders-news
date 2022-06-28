@@ -164,6 +164,18 @@
   display: none;
 }
 
+.mobile-search {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.75rem;
+  padding: 0.5rem;
+  border: 1px solid var(--border);
+  margin: 20px;
+  margin-right: 20px;
+  margin-left: 20px;
+  background-color: var(--bg-secondary);
+}
+
 @media (min-width: 300px) {
   .tabs {
     display: flex;
@@ -200,7 +212,7 @@
   }
 }
 
-@media only screen and (min-width: 480px) {
+@media only screen and (min-width: 768px) {
   .select {
     display: none;
   }
@@ -216,6 +228,10 @@
   }
   .mobile-tabs {
     display: none;
+  }
+  .mobile-search {
+    margin-left: 40px;
+    margin-right: 40px;
   }
   .tab-item {
     display: flex;
@@ -268,6 +284,9 @@
 
 /* TABLET LANDSCAPE / DESKTOP */
 @media only screen and (min-width: 1024px) {
+  .mobile-search {
+    display: none;
+  }
   .tab-search {
     display: flex;
   }

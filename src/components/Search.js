@@ -15,6 +15,7 @@ function Search() {
   const [filterText, setFilterText] = useState("");
 
   function toggleFocus() {
+    window.scrollTo(ref);
     setIsFocused(!isFocused);
   }
 
@@ -66,7 +67,7 @@ function Search() {
           )}
           {articlesToDisplay.map((article) => (
             <Link
-              to={`/articles/${article.article_id}`}
+              to={`/${article.article_id}`}
               key={article.article_id}
               onClick={toggleFocus}
             >

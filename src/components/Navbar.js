@@ -18,19 +18,22 @@ export default function Navbar() {
           <Logo className="logo" />
           <h1>Northcoders News</h1>
         </Link>
-
         <nav>
           <Dropdown icon={<TopicDropdownButton />}>
             <TopicDropdown />
           </Dropdown>
 
-          <Search />
+          <div className="nav-search">
+            <Search />
+          </div>
 
-          <button className="new-article">Post Article</button>
+          <button className="new-article">New Post</button>
         </nav>
-        <Dropdown icon={<UserDropdownButton />}>
-          <UserDropdown />
-        </Dropdown>
+        <div className="flex-end">
+          <Dropdown icon={<UserDropdownButton />}>
+            <UserDropdown />
+          </Dropdown>
+        </div>
       </div>
     </header>
   );

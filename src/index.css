@@ -50,6 +50,7 @@
 
 html {
   transition: all 3s ease-out;
+  scroll-behavior: smooth;
 }
 
 html,
