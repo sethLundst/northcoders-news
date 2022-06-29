@@ -57,30 +57,29 @@ export default function DeleteButton({
       >
         <TrashIcon className="delete-icon" /> Delete
       </button>
+
       {open ? (
-        <>
-          <div className="modal-container">
-            <div className="modal99">
-              <AlertIcon className="alert-icon" />
-              <p className="modal-message">{`Are you sure you want to delete your ${
-                Object.keys(item)[0]
-              }?`}</p>
-              <div className="modal-buttons">
-                <button
-                  className="modal-button cancel"
-                  onClick={() => {
-                    setOpen(false);
-                  }}
-                >
-                  Cancel
-                </button>
-                <button className="modal-button delete" onClick={handleDelete}>
-                  Delete
-                </button>
-              </div>
+        <div className="delete-modal-container">
+          <div className="delete-modal">
+            <AlertIcon className="alert-icon" />
+            <p className="modal-message">{`Are you sure you want to delete your ${
+              Object.keys(item)[0]
+            }?`}</p>
+            <div className="modal-buttons">
+              <button
+                className="modal-button cancel"
+                onClick={() => {
+                  setOpen(false);
+                }}
+              >
+                Cancel
+              </button>
+              <button className="modal-button delete" onClick={handleDelete}>
+                Delete
+              </button>
             </div>
           </div>
-        </>
+        </div>
       ) : (
         ""
       )}

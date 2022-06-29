@@ -1,6 +1,6 @@
 import "../styles/UserDropdown.css";
 import { Switch } from ".";
-import { Settings, UserIcon } from "../icons";
+import { Settings } from "../icons";
 import { useTheme } from "../contexts/ThemeContext";
 
 export default function UserDropdown() {
@@ -9,10 +9,10 @@ export default function UserDropdown() {
   return (
     <div className="user-dropdown">
       <div className="user-menu">
-        <li className="user-menu-category">
+        {/* <li className="user-menu-category">
           <UserIcon className="user-menu-icon" />
           Profile
-        </li>
+        </li> */}
         <div className="divider"></div>
         <li className="user-menu-category">
           <Settings className="user-menu-icon" />

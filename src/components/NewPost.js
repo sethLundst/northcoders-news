@@ -24,6 +24,7 @@ function NewPost() {
     body: true,
     topic: true,
   });
+
   const icons = {
     "select a topic": <TopicIcon />,
     coding: <Coding />,

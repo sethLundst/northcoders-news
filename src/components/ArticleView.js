@@ -12,7 +12,6 @@ export default function ArticleView({
   const { user } = useUser();
   return (
     <div>
-      <div className="center" id="center"></div>
       <div className="article-view-card" id="article-view-card">
         <div className="article-view-votes">
           {cloneElement(children, {
@@ -23,12 +22,14 @@ export default function ArticleView({
         <div className="article-view-details">
           <h5>
             nc/{article.topic} ·
-            <span className="article-details">posted by </span>
+            <span className="article-details"> posted by </span>
             <span className="article-author">{article.author} </span>
-            {`on ${article.created_at.substring(
-              0,
-              article.created_at.indexOf("T")
-            )}`}
+            <span className="article-details">
+              {`on ${article.created_at.substring(
+                0,
+                article.created_at.indexOf("T")
+              )}`}
+            </span>
             <div className="article-delete">
               <div className="article-delete-button">
                 {article.author === user && (

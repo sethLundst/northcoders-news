@@ -17,7 +17,7 @@ export default function Navbar() {
       <div className="header-container">
         <Link to="/" className="header" onClick={() => {}}>
           <Logo className="logo" />
-          <h1>Northcoders News</h1>
+          <h1 className="title">Northcoders News</h1>
         </Link>
         <nav>
           <Dropdown icon={<TopicDropdownButton />}>
@@ -27,10 +27,10 @@ export default function Navbar() {
           <div className="nav-search">
             <Search />
           </div>
-
-          <NewPost />
         </nav>
+
         <div className="flex-end">
+          <NewPost />
           <Dropdown icon={<UserDropdownButton />}>
             <UserDropdown />
           </Dropdown>
