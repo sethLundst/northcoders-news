@@ -110,6 +110,9 @@ nav {
     flex-grow: 1;
     align-items: center;
   }
+  .header-container {
+    width: auto;
+  }
 }
 
 @media (max-width: 639px) {

@@ -49,7 +49,7 @@
 }
 
 html {
-  transition: all 3s ease-out;
+  transition: all 1s ease-out;
   scroll-behavior: smooth;
 }
 

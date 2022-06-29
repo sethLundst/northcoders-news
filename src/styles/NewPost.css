@@ -1,0 +1,136 @@
+.new-post-container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  transition: all 2s;
+  backdrop-filter: blur(1px);
+  z-index: 999;
+}
+
+.new-post-modal {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: left;
+  border-radius: 20px;
+  padding: 20px;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border);
+}
+
+.title-input {
+  background-color: var(--gray);
+  color: var(--text);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  border: 1px solid var(--border);
+  border-width: 1px;
+  outline: none;
+  overflow: hidden;
+  padding: 5px;
+  margin-bottom: 20px;
+}
+
+.new-post-tp-bt {
+  display: flex;
+  width: auto;
+  border: 1px solid var(--bg-secondary);
+  color: var(--text);
+  line-height: 1.25rem;
+  padding-top: 0.32rem;
+  padding-bottom: 0.32rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  background-color: var(--gray);
+  font-size: 0.875rem;
+  font-weight: 600;
+  justify-content: left;
+  border-radius: 0.25rem;
+  margin-bottom: 20px;
+}
+
+.new-post-tp-drp {
+  position: absolute;
+  z-index: 1;
+  margin-top: 88px;
+  width: calc(100% - 40px);
+  border: 1px var(--border) solid;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  background-color: var(--gray);
+  border-radius: 0.375rem;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-top-width: 0px;
+  transform-origin: top right;
+}
+
+.new-post-textarea {
+  padding: 0.625rem;
+  background-color: var(--gray);
+  color: var(--text);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  width: auto;
+  height: auto;
+  min-height: 140px;
+  max-height: 600px;
+  border: 1px solid var(--border);
+  border-bottom-style: none;
+  border-bottom-width: 0px;
+  border-width: 1px;
+  outline: none;
+  overflow: hidden;
+}
+
+.new-post-btn {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  color: #ffffff;
+  font-weight: 700;
+  border-radius: 5px;
+}
+
+.cancel {
+  background-color: var(--pagination);
+  margin-right: 7.5px;
+}
+
+.cancel:hover {
+  filter: opacity(0.8);
+}
+
+.submit {
+  background-color: green;
+  margin-left: 7.5px;
+}
+
+.submit:hover {
+  filter: opacity(0.8);
+}
+
+.alert-icon {
+  justify-content: center;
+  height: 30px;
+  width: 30px;
+  color: red;
+  fill: var(--gray);
+}
+
+.modal-message {
+  display: flex;
+  padding: 20px;
+  font-size: 1.5em;
+}
+
+.invalid {
+  border: 1px solid red;
+}

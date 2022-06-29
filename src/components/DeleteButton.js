@@ -4,10 +4,17 @@ import { useOnClickOutside } from "../hooks";
 import { AlertIcon, TrashIcon } from "../icons";
 import { deleteArticle, deleteComment } from "../api";
 
-export default function DeleteButton({ article, setArticle, item, setParams }) {
+export default function DeleteButton({
+  article,
+  setArticle,
+  item,
+  setParams,
+  status,
+  setStatus,
+}) {
   const ref = useRef();
   const [open, setOpen] = useState(false);
-  useOnClickOutside(ref, () => {
+  useOnClickOutside(ref, (e) => {
     setOpen(false);
   });
 
@@ -24,16 +31,17 @@ export default function DeleteButton({ article, setArticle, item, setParams }) {
         clicked: "most recent",
       });
       setOpen(false);
+      setStatus("Submit");
     } else {
       deleteArticle(item.article_id);
     }
   }
 
-  if (open) {
-    document.getElementById("center").style.zIndex = "1";
-  } else {
-    document.getElementById("center").style.zIndex = "-1";
-  }
+  // if (open) {
+  //   document.getElementById("center").style.zIndex = "1";
+  // } else {
+  //   document.getElementById("center").style.zIndex = "-1";
+  // }
 
   return (
     <div ref={ref}>

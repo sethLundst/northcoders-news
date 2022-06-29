@@ -11,6 +11,8 @@ export default function CommentList({
   setComments,
   setParams,
   children,
+  status,
+  setStatus,
 }) {
   const { user } = useUser();
 
@@ -55,6 +57,8 @@ export default function CommentList({
                       comments={comments}
                       setComments={setComments}
                       setParams={setParams}
+                      status={status}
+                      setStatus={setStatus}
                     />
                   ) : (
                     ""

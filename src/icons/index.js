@@ -28,6 +28,7 @@ import { ReactComponent as StarIcon } from "./starORIG.svg";
 import { ReactComponent as SunIcon } from "./sun.svg";
 import { ReactComponent as ThumbDownIcon } from "./thumbs-down-outline.svg";
 import { ReactComponent as ThumbUpIcon } from "./thumbs-up-outline.svg";
+import { ReactComponent as TopicIcon } from "./topic.svg";
 import { ReactComponent as TrashIcon } from "./trash.svg";
 import { ReactComponent as UserIcon } from "./person-outline.svg";
 import { ReactComponent as Logo } from "./logo.svg";
@@ -62,6 +63,7 @@ export {
   StarIcon,
   Settings,
   SunIcon,
+  TopicIcon,
   ThumbDownIcon,
   ThumbUpIcon,
   TrashIcon,

@@ -47,6 +47,8 @@ function Post() {
         setComments={setComments}
         params={params}
         setParams={setParams}
+        status={status}
+        setStatus={setStatus}
       >
         <VoteButtons data={comments} setData={setComments} />
       </CommentList>

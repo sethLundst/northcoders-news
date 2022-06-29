@@ -2,6 +2,7 @@ import "../styles/Navbar.css";
 import { Link } from "react-router-dom";
 import {
   Dropdown,
+  NewPost,
   Search,
   TopicDropdown,
   TopicDropdownButton,
@@ -27,7 +28,7 @@ export default function Navbar() {
             <Search />
           </div>
 
-          <button className="new-article">New Post</button>
+          <NewPost />
         </nav>
         <div className="flex-end">
           <Dropdown icon={<UserDropdownButton />}>

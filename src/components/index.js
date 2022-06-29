@@ -8,6 +8,7 @@ import Dropdown from "./Dropdown";
 import Error from "./Error";
 import Loading from "./Loading";
 import Navbar from "./Navbar";
+import NewPost from "./NewPost";
 import Pagination from "./Pagination";
 import Search from "./Search";
 import SortByDropdown from "./SortByDropdown";
@@ -30,6 +31,7 @@ export {
   Error,
   Loading,
   Navbar,
+  NewPost,
   Pagination,
   Search,
   SortByDropdown,
