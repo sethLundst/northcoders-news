@@ -8,6 +8,7 @@ import { ReactComponent as ChevronDown2Icon } from "../icons/chevron-down-2.svg"
 import { ReactComponent as ChevronDown } from "../icons/chevron-down-outline.svg";
 import { ReactComponent as ChevronRightIcon } from "../icons/chevron-right.svg";
 import { ReactComponent as ChevronLeftIcon } from "../icons/chevron-left.svg";
+import { ReactComponent as ClockIcon } from "../icons/clock.svg";
 import { ReactComponent as Coding } from "../icons/coding.svg";
 import { ReactComponent as Cooking } from "../icons/pizza-outline.svg";
 import { ReactComponent as DocumentIcon } from "../icons/document.svg";
@@ -36,6 +37,7 @@ export {
   ArrowUpIcon,
   ArrowDownIcon,
   BarChartIcon,
+  ClockIcon,
   ChatIcon,
   ChevronDown,
   ChevronDownIcon,

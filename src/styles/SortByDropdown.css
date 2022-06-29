@@ -1,0 +1,62 @@
+.sort-by-button-container {
+  display: flex;
+  position: relative;
+  justify-content: left;
+  text-align: left;
+  margin-right: 20px;
+  margin-left: 20px;
+  padding-bottom: 20px;
+  background-color: var(--bg-secondary);
+}
+
+.sort-by-button {
+  display: flex;
+  width: auto;
+  color: var(--switch-blue);
+  line-height: 1.25rem;
+  padding-top: 0.32rem;
+  margin-left: 60px;
+
+  padding-bottom: 0.32rem;
+  background-color: var(--bg-secondary);
+  font-size: 0.875rem;
+  font-weight: 600;
+  justify-content: left;
+  border-radius: 0.25rem;
+}
+
+.sort-by {
+  text-align: left;
+  margin-top: 0.1rem;
+}
+
+.sort-by-chevron {
+  position: relative;
+  display: flex;
+  width: 1rem;
+  height: 1rem;
+  margin-left: 10px;
+  margin-right: 0px;
+  margin-top: 0.3rem;
+}
+
+.sort-by-dropdown {
+  position: absolute;
+  width: 277px;
+  z-index: 100;
+  margin-left: 60px;
+  border: 1px var(--border) solid;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  background-color: var(--bg-secondary);
+  border-radius: 0.375rem;
+  margin-top: 5px;
+  transform-origin: top right;
+}
+
+@media (min-width: 768px) {
+  .sort-by-button-container {
+    margin-right: 40px;
+    margin-left: 40px;
+  }
+}

@@ -3,6 +3,7 @@ import "../styles/Pagination.css";
 import { useFetchPageTotal } from "../hooks";
 import { ChevronRightIcon, ChevronLeftIcon } from "../icons";
 import { useNavigate } from "react-router-dom";
+import { Loading } from ".";
 
 export default function Pagination({
   articles,
@@ -36,7 +37,7 @@ export default function Pagination({
   }
 
   if (error) navigate("/error", { state: error.data });
-  if (isLoading) return <p>Loading... </p>;
+  if (isLoading) return <Loading />;
 
   return (
     <div className="page-container">

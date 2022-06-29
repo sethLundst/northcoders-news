@@ -10,7 +10,7 @@ import Loading from "./Loading";
 import Navbar from "./Navbar";
 import Pagination from "./Pagination";
 import Search from "./Search";
-import SortTabs from "./SortTabs";
+import SortByDropdown from "./SortByDropdown";
 import Switch from "./Switch";
 import Tabs from "./Tabs";
 import TopicDropdown from "./TopicDropdown";
@@ -32,7 +32,7 @@ export {
   Navbar,
   Pagination,
   Search,
-  SortTabs,
+  SortByDropdown,
   Switch,
   Tabs,
   TopicDropdown,

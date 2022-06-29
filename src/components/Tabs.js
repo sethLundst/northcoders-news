@@ -17,7 +17,7 @@ export default function Tabs({ setFilter, params, setParams }) {
   const [active, setActive] = useState("New");
   const [isDesc, setIsDesc] = useState(true);
   const [open, setOpen] = useState(false);
-  // const categories = ["New", "Popular", "Most Comments"];
+
   const icons = {
     new: <StarIcon />,
     popular: <BarChartIcon />,

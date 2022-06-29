@@ -10,7 +10,7 @@ export default function Dropdown(props) {
   });
 
   return (
-    <div ref={ref}>
+    <div ref={ref} className="fixed">
       <div
         onClick={() => {
           setOpen(!open);
@@ -18,6 +18,7 @@ export default function Dropdown(props) {
       >
         {cloneElement(props.icon, { open: open })}
       </div>
+
       {open && cloneElement(props.children, { setOpen: setOpen })}
     </div>
   );

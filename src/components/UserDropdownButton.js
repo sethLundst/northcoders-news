@@ -1,5 +1,4 @@
 import "../styles/UserDropdownButton.css";
-import { Loading } from ".";
 import { useUser } from "../contexts";
 import { useFetchArticles } from "../hooks";
 import { ChevronDown, RatingIcon, UserIcon } from "../icons";
@@ -24,7 +23,6 @@ export default function UserDropdownButton({ open }) {
   }
 
   if (error) navigate("/error", { state: error.data });
-  if (isLoading) return <Loading />;
 
   return (
     <div className="user-button-container">
@@ -36,7 +34,7 @@ export default function UserDropdownButton({ open }) {
           <div className="user-name">{user}</div>
           <div className="user-name2">
             <RatingIcon className="rating-icon" />
-            {getVotes()} votes
+            {isLoading ? 0 : getVotes()} votes
           </div>
         </div>
         <ChevronDown className="user-chevron2" />

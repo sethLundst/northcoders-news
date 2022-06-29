@@ -2,8 +2,8 @@
   display: flex;
   margin-top: 20px;
   color: var(--text);
-  margin-right: 40px;
-  margin-left: 40px;
+  margin-right: 20px;
+  margin-left: 20px;
   background-color: var(--bg-secondary);
   height: 100vh;
   position: relative;
@@ -106,5 +106,12 @@ h5 {
   font-size: 14px;
   font-weight: 400;
   margin-top: 1rem;
-  text-align: justify;
+  text-align: left;
+}
+
+@media (min-width: 768px) {
+  .article-view-card {
+    margin-right: 40px;
+    margin-left: 40px;
+  }
 }

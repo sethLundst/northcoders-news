@@ -1,52 +1,44 @@
 .loading-screen {
-  min-height: 80vh;
-  display: flex;
+  position: absolute;
   flex-direction: column;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin-top: 50px;
+  display: flex;
+  z-index: 999;
+  background-color: var(--bg-primary);
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
 }
 
 .loading-logo {
-  height: 5vmin;
-  margin-bottom: 1rem;
-  margin-right: 0.5rem;
-  pointer-events: none;
-}
-
-.loading:after {
-  overflow: hidden;
   display: inline-block;
-  vertical-align: bottom;
-  -webkit-animation: ellipsis steps(4, end) 1000ms infinite;
-  animation: ellipsis steps(4, end) 1000ms infinite;
-  content: "\2026";
-  width: 0px;
+  width: 50px;
+  height: 50px;
+  fill: var(--red);
+  margin-bottom: 5px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .loading-logo {
-    animation: App-logo-spin infinite 2s linear;
-  }
+.spinner {
+  width: 48px;
+  height: 48px;
+  margin-top: 15px;
+  border: 5px solid #fff;
+  border-bottom-color: #ff3d00;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
 }
 
-@keyframes App-logo-spin {
-  from {
+@keyframes rotation {
+  0% {
     transform: rotate(0deg);
   }
-  to {
+  100% {
     transform: rotate(360deg);
-  }
-}
-
-@keyframes ellipsis {
-  to {
-    width: 20px;
-  }
-}
-
-@-webkit-keyframes ellipsis {
-  to {
-    width: 20px;
   }
 }

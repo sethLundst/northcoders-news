@@ -18,7 +18,6 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/:article_id" element={<Post />} />
-              <Route path="/loading" />
               <Route path="/error" element={<Error />} />
               <Route path="*" element={<Error />} />
             </Routes>

@@ -6,25 +6,36 @@
   cursor: pointer;
 }
 
-.upvote:hover,
+.upvote:hover {
+  color: var(--text-gray);
+}
 .upvote-clicked {
   color: green;
 }
 
-.downvote:hover,
+.downvote:hover {
+  color: var(--text-gray);
+}
 .downvote-clicked {
   color: red;
-}
-
-.downvote:hover,
-.downvote-clicked {
-  color: var(--red);
 }
 
 .vote-count {
   text-align: center;
   padding-left: 5px;
   padding-right: 5px;
+}
+
+@media (min-width: 1024px) {
+  .upvote:hover,
+  .upvote-clicked {
+    color: green;
+  }
+
+  .downvote:hover,
+  .downvote-clicked {
+    color: red;
+  }
 }
 
 @media (min-width: 480px) {

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useParams } from "../contexts";
 import { useFetchTopics } from "../hooks";
 import { Coding, Cooking, Football, Home } from "../icons";
+import { Loading } from ".";
 
 export default function TopicDropdown({ setOpen }) {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ export default function TopicDropdown({ setOpen }) {
   };
 
   if (error) navigate("/error", { state: error.data });
-  if (isLoading) return <></>;
+  if (isLoading) return <Loading />;
 
   return (
     <div className="topic-dropdown">

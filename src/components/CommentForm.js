@@ -11,6 +11,7 @@ export default function CommentForm({
   setParams,
   status,
   setStatus,
+  children,
 }) {
   const { article_id } = useParams();
   const { user } = useUser();
