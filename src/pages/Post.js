@@ -27,7 +27,11 @@ function Post() {
 
   return (
     <>
-      <ArticleView article={article} setArticle={setArticle}>
+      <ArticleView
+        article={article}
+        setArticle={setArticle}
+        setParams={setParams}
+      >
         <VoteButtons data={article} setData={setArticle} />
       </ArticleView>
       <CommentForm

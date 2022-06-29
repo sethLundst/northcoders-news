@@ -68,6 +68,8 @@
 .article-view-details {
   display: block;
   text-align: left;
+
+  width: 100%;
 }
 
 .article-details {
@@ -76,10 +78,25 @@
   letter-spacing: 0.025em;
   font-size: 0.8rem;
   font-weight: 400;
+  width: fit-content;
+}
+
+.article-delete {
+  color: var(--text-gray);
+  line-height: 1.25rem;
+  letter-spacing: 0.025em;
+  font-size: 0.8rem;
+  font-weight: 400;
+  width: fit-content;
+  float: right;
 }
 .article-author {
   color: var(--red);
   font-size: 0.8rem;
+}
+
+.article-delete-button {
+  display: inline-block;
 }
 
 .collapsible {

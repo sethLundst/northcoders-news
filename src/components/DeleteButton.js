@@ -3,17 +3,19 @@ import { useRef, useState } from "react";
 import { useOnClickOutside } from "../hooks";
 import { AlertIcon, TrashIcon } from "../icons";
 import { deleteArticle, deleteComment } from "../api";
+import { useNavigate } from "react-router-dom";
 
 export default function DeleteButton({
   article,
   setArticle,
   item,
   setParams,
-  status,
   setStatus,
 }) {
   const ref = useRef();
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
+
   useOnClickOutside(ref, (e) => {
     setOpen(false);
   });
@@ -33,7 +35,9 @@ export default function DeleteButton({
       setOpen(false);
       setStatus("Submit");
     } else {
-      deleteArticle(item.article_id);
+      setOpen(false);
+      await deleteArticle(item.article.article_id);
+      navigate("/");
     }
   }
 

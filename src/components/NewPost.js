@@ -35,6 +35,7 @@ function NewPost() {
     setIsValid({ title: true, body: true, topic: true });
     setOpen(false);
     setDropdownOpen(false);
+    setStatus("Submit");
     setTimeout(function () {
       setSelected("Select a Topic");
     }, 100);
@@ -80,7 +81,7 @@ function NewPost() {
           navigate("/");
         }
         setTimeout(function () {
-          setStatus("Submit");
+          closeModal();
         }, 1000);
       }, 1000);
     } else {

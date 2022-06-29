@@ -49,7 +49,7 @@ export default function CommentList({
                     id: comment.comment_id,
                     votes: comment.votes,
                   })}
-                  {comment.author === user ? (
+                  {comment.author === user && (
                     <DeleteButton
                       article={article}
                       setArticle={setArticle}
@@ -60,8 +60,6 @@ export default function CommentList({
                       status={status}
                       setStatus={setStatus}
                     />
-                  ) : (
-                    ""
                   )}
                 </div>
               </div>
