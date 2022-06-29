@@ -5,7 +5,7 @@
 .tab-item {
   display: flex;
   height: 40px;
-  color: var(--text);
+  color: var(--text-gray);
   line-height: 1.25rem;
   font-size: 14px;
   align-items: center;
@@ -70,6 +70,10 @@
   display: none;
 }
 
+.tab-item:hover {
+  filter: contrast(0.95);
+}
+
 .tab-search {
   position: relative;
   display: none;
@@ -124,15 +128,11 @@
   border: none;
 }
 
--item:hover {
-  filter: brightness(1.1);
-}
 .active {
-  filter: brightness(1.5);
+  color: var(--fg-primary);
+  filter: contrast(0.95);
 }
-.active:hover {
-  filter: brightness(1.5);
-}
+
 .order {
   background-color: var(--gray);
   display: flex;
@@ -243,7 +243,7 @@
     font-weight: 500;
     font-size: 0.5em;
     border-radius: 0.25rem;
-    background-color: var(--accent);
+    background-color: var(--gray);
     height: 40px;
     min-width: 135px;
     align-items: center;

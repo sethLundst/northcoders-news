@@ -2,7 +2,7 @@
   display: flex;
   width: 100%;
   align-items: center;
-  border-color: rgb(52, 52, 53);
+  border-color: var(--border-dark);
   border-left-width: 1px;
 }
 

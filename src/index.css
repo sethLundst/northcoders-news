@@ -6,14 +6,16 @@
 }
 
 [data-theme="light"] {
+  --arts-card: rgb(248, 249, 250);
   --author: rgb(217 61 43);
   --bg-primary: rgb(215 220 226);
   --bg-secondary: rgb(255 255 255);
-  --bg-dark: rgb(22, 22, 23);
+  --bg-dark: rgb(248, 249, 250);
   --fg-primary: rgb(51 121 207);
   --fg-secondary: rgb(67 132 211);
   --border: rgb(204 204 204);
   --border-secondary: rgb(137 137 137);
+  --border-dark: rgb(238, 239, 241);
   --gray: rgb(246 247 248);
   --highlighted: rgb(245 245 245);
   --pagination: rgb(164, 165, 166);
@@ -28,6 +30,7 @@
 }
 
 [data-theme="dark"] {
+  --arts-card: rgb(21, 21, 22);
   --author: rgb(126, 127, 128);
   --bg-primary: rgb(3 3 3);
   --bg-secondary: rgb(26 26 27);
@@ -36,6 +39,7 @@
   --fg-secondary: rgb(201 203 205);
   --border: rgb(52 53 54);
   --border-secondary: rgb(130, 131, 132);
+  --border-dark: rgb(52, 52, 53);
   --gray: rgb(39 39 41);
   --highlighted: rgb(35 35 36);
   --pagination: rgb(39 39 41);

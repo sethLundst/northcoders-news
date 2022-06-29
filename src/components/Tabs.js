@@ -78,13 +78,14 @@ export default function Tabs({ setFilter, params, setParams }) {
           </Dropdown>
           <a
             className={`tb-drpd-btn ${open ? "open" : ""}`}
-            onClick={() => {
+            onClick={(event) => {
+              event.preventDefault();
               setOpen(!open);
             }}
             href="/"
           >
             {active === "New" ? (
-              <StarIcon className="home" />
+              <StarIcon className="tab-icon" />
             ) : (
               cloneElement(icons[active.toLowerCase().replace(/\s/g, "_")], {
                 className: "icon",

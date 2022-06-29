@@ -65,7 +65,7 @@
   filter: brightness(1.05);
 }
 .empty {
-  background-color: var(--pagination);
+  background-color: var(--text);
   filter: opacity(0.6);
 }
 .invalid {

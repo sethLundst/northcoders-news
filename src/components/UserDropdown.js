@@ -13,7 +13,7 @@ export default function UserDropdown() {
           <UserIcon className="user-menu-icon" />
           Profile
         </li> */}
-        <div className="divider"></div>
+        {/* <div className="divider"></div> */}
         <li className="user-menu-category">
           <Settings className="user-menu-icon" />
           Settings

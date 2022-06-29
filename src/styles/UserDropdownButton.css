@@ -5,9 +5,10 @@
 .user-button {
   display: flex;
   width: 100%;
-  border: 1px solid var(--border);
   color: var(--text);
-  line-height: 1.25rem;
+  border: 1px solid;
+  border-color: var(--bg-secondary);
+  line-height: 1rem;
   padding-top: 0.32rem;
   padding-bottom: 0.32rem;
   padding-left: 0.5rem;
@@ -46,7 +47,8 @@
 
 .user-name {
   display: flex;
-  line-height: 0.4rem;
+  padding-top: 3px;
+  line-height: 0.3rem;
   text-align: left;
 }
 .user-name2 {
@@ -109,11 +111,7 @@
   .user-button {
     display: flex;
     width: 210px;
-    border: 1px solid var(--border);
     color: var(--text);
-    line-height: 1.25rem;
-    padding-top: 0.32rem;
-    padding-bottom: 0.32rem;
     cursor: pointer;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
