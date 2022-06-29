@@ -4,6 +4,7 @@ header {
   background-color: var(--bg-secondary);
   justify-content: space-between;
   flex-grow: 1;
+  border: 1px solid red;
 }
 
 .header-container {
@@ -12,7 +13,6 @@ header {
   height: 50px;
   align-items: center;
   margin-inline-start: 0.75rem;
-  margin-inline-end: 0.75rem;
 }
 
 .header {
@@ -56,17 +56,17 @@ nav {
 
 .new-article {
   max-width: 100%;
-
   border: solid;
   height: auto;
   color: var(--bg-secondary);
   cursor: pointer;
   white-space: nowrap;
   text-align: center;
+  height: auto;
+  margin-top: 2px;
+  margin-bottom: 2px;
   margin-left: -0.1rem;
   margin-right: 0.5rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
   padding-left: 1rem;
   padding-right: 1rem;
   font-size: auto;
