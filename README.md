@@ -6,7 +6,7 @@ Backend repo: https://github.com/sethLundst/nc-news-backend
 
 Deployed version: https://northcoders-news-webapp.netlify.app
 
-### Run Locally 
+## Run Locally 
 
 Requires **Node v16.x**
 
