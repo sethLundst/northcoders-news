@@ -37,8 +37,6 @@ export default function Pagination({
         });
   }
 
-  console.log(pageTotal);
-
   if (error) navigate("/error", { state: error.data });
   if (isLoading) return <Loading />;
 

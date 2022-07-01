@@ -14,7 +14,6 @@ export default function useFetchArticles(articleParams) {
 
   useEffect(() => {
     async function fetchArticles() {
-      console.log(params);
       try {
         const response = await getArticles(params);
         setArticles(response.data.articles);

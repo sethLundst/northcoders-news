@@ -8,7 +8,6 @@ export default function useFetchTopics() {
 
   useEffect(() => {
     async function fetchTopics() {
-      console.log("fetching topics");
       try {
         const response = await getTopics();
         setTopics(response.data.topics);
