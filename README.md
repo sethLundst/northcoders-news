@@ -13,7 +13,7 @@ Requires **Node v16.x**
 Clone and navigate to repository:  
 
     # git clone https://github.com/sethLundst/nc-news-frontend.git 
-    # cd nc-news-frontend
+    # cd northcoders-news
 
 Install dependencies:  
 
