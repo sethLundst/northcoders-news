@@ -23,6 +23,7 @@ export default function Pagination({
 
   function handlePage(page) {
     window.scrollTo(0, 0);
+    document.querySelector("header").scrollTo(0, 0);
     filter.hasOwnProperty("topic")
       ? setParams({
           ...params,

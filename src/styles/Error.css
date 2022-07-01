@@ -1,15 +1,21 @@
 .error {
   position: absolute;
-  width: 100vw;
-  height: 100%;
-  margin-top: 15vw;
+  display: flex;
+  flex-direction: column;
+  top: 0;
   right: 0;
   left: 0;
+  bottom: 0;
+  border: red solid 1px;
+  justify-content: center;
+  margin-top: 50px;
+  padding-bottom: 50px;
 }
 
 .error-logo {
   width: 60px;
   height: 60px;
+  align-self: center;
   fill: var(--red);
 }
 
@@ -27,10 +33,11 @@
   margin-bottom: 0.75rem;
 }
 
-.back-button {
+.error-button {
   border: solid 1px var(--text-gray);
   line-height: 1.5rem;
   background-color: rgb(255, 255, 255);
+  color: rgb(28 28 28);
   font-size: 1rem;
   text-align: center;
   border-radius: 0.5rem;

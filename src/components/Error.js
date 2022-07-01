@@ -11,22 +11,25 @@ function Error({ message }) {
       <div className="error-message">
         Oops! {message ? message.data.msg : "Page not found"}
       </div>
-      <button
-        className="back-button"
-        onClick={() => {
-          navigate(-1);
-        }}
-      >
-        Back
-      </button>
-      <button
-        className="back-button"
-        onClick={() => {
-          navigate("/");
-        }}
-      >
-        Home
-      </button>
+      <div>
+        <button
+          className="error-button"
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
+          Back
+        </button>
+        <button
+          className="error-button"
+          style={{ backgroundColor: "var(--green)" }}
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          Home
+        </button>
+      </div>
     </div>
   );
 }
