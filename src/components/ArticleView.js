@@ -3,22 +3,15 @@ import { cloneElement } from "react";
 import { useUser } from "../contexts";
 import { DeleteButton } from ".";
 
-export default function ArticleView({
-  article,
-  setArticle,
-  setParams,
-  children,
-}) {
+export default function ArticleView({ article, setParams, children }) {
   const { user } = useUser();
   return (
     <div>
       <div className="article-view-card" id="article-view-card">
-        <div className="article-view-votes">
-          {cloneElement(children, {
-            id: article.article_id,
-            votes: article.votes,
-          })}
-        </div>
+        {cloneElement(children, {
+          id: article.article_id,
+          votes: article.votes,
+        })}
         <div className="article-view-details">
           <h5>
             nc/{article.topic} ·
@@ -41,7 +34,6 @@ export default function ArticleView({
               </div>
             </div>
           </h5>
-
           <h4 className="article-view-title">{article.title}</h4>
           <p className="article-body">{article.body}</p>
         </div>

@@ -16,15 +16,6 @@
   padding-right: 60px;
 }
 
-.article-view-votes {
-  display: flex;
-  flex-direction: column;
-  max-width: 60px;
-  min-width: 60px;
-  background-color: var(--bg-secondary);
-  border-right-width: 0px;
-}
-
 .article-link {
   display: flex;
   width: 100%;

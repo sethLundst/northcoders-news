@@ -37,6 +37,8 @@ export default function Pagination({
         });
   }
 
+  console.log(pageTotal);
+
   if (error) navigate("/error", { state: error.data });
   if (isLoading) return <Loading />;
 
@@ -57,7 +59,7 @@ export default function Pagination({
           ) : (
             <p className="page-text">
               Showing <b>{params.p}</b> to <b>{pageTotal.pages}</b> of
-              <b> {pageTotal.elements}</b> results
+              <b> {pageTotal.items}</b> results
             </p>
           )}
         </div>

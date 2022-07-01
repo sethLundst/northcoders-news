@@ -10,21 +10,23 @@ import { Home, Post } from "./pages";
 
 function App() {
   return (
-    <ThemeProvider>
-      <UserProvider>
-        <VotesProvider>
-          <ParamsProvider>
-            <Navbar />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/:article_id" element={<Post />} />
-              <Route path="/error" element={<Error />} />
-              <Route path="*" element={<Error />} />
-            </Routes>
-          </ParamsProvider>
-        </VotesProvider>
-      </UserProvider>
-    </ThemeProvider>
+    <>
+      <ThemeProvider>
+        <UserProvider>
+          <VotesProvider>
+            <ParamsProvider>
+              <Navbar />
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="*" element={<Home />} />
+                <Route path="/:article_id" element={<Post />} />
+                <Route path="/error" element={<Error />} />
+              </Routes>
+            </ParamsProvider>
+          </VotesProvider>
+        </UserProvider>
+      </ThemeProvider>
+    </>
   );
 }
 
