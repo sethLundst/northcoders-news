@@ -100,25 +100,15 @@
   padding-right: 1rem;
   color: #ffffff;
   font-weight: 700;
-  border-radius: 5px;
-}
-
-.cancel {
-  background-color: var(--pagination);
   margin-right: 7.5px;
-}
-
-.cancel:hover {
-  filter: opacity(0.8);
-}
-
-.submit {
-  background-color: green;
   margin-left: 7.5px;
+  border-radius: 5px;
+  border: solid 1px var(--text-gray);
 }
 
-.submit:hover {
+.new-post-btn:hover {
   filter: opacity(0.8);
+  transform: scale(1.05) perspective(0.5px);
 }
 
 .alert-icon {

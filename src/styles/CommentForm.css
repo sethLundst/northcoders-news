@@ -56,13 +56,12 @@
   padding-right: 20px;
   line-height: 0%;
   border-color: var(--fg-primary);
-  background-color: var(--red);
   border-radius: 13px;
   color: var(--bg-secondary);
 }
 
 .unempty:hover {
-  filter: brightness(1.05);
+  filter: opacity(0.8);
 }
 .empty {
   background-color: var(--text);

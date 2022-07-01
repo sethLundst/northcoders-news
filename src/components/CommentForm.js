@@ -45,7 +45,8 @@ export default function CommentForm({
   return (
     <form id="form" className="form" onSubmit={handleCommentSubmit}>
       <p>
-        Comment as <span style={{ color: "var(--red)" }}>anonymous</span>
+        Comment as{" "}
+        <span style={{ color: "var(--switch-blue)" }}>anonymous</span>
       </p>
       <textarea
         id="textarea"
@@ -64,6 +65,7 @@ export default function CommentForm({
       <div className="comment-box-buttons">
         <div className="btn-container">
           <button
+            style={{ backgroundColor: "var(--green)" }}
             className={`comment-submit ${
               newComment === "" ? "empty" : "unempty"
             }`}

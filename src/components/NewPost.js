@@ -180,10 +180,18 @@ function NewPost() {
               cols="50"
             />
             <div className="modal-buttons">
-              <button className="new-post-btn cancel" onClick={closeModal}>
+              <button
+                className="new-post-btn"
+                style={{ backgroundColor: "var(--pagination)" }}
+                onClick={closeModal}
+              >
                 Cancel
               </button>
-              <button className="new-post-btn submit" onClick={() => {}}>
+              <button
+                className="new-post-btn"
+                style={{ backgroundColor: "var(--green)" }}
+                onClick={() => {}}
+              >
                 Submit
               </button>
             </div>
