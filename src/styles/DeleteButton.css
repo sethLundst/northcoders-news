@@ -35,10 +35,10 @@
   display: flex;
   position: relative;
   flex-direction: column;
-  text-align: left;
+  text-align: center;
   align-items: center;
   border-radius: 20px;
-  width: 50%;
+  width: auto;
   padding: 20px;
   background-color: var(--bg-secondary);
   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
@@ -56,9 +56,6 @@
   display: flex;
   padding: 20px;
   font-size: 1.5em;
-}
-
-.modal-buttons {
 }
 
 .modal-button {
@@ -87,4 +84,10 @@
 
 .delete:hover {
   filter: opacity(0.8);
+}
+
+@media (min-width: 1024px) {
+  .delete-modal {
+    margin-bottom: 250px;
+  }
 }
