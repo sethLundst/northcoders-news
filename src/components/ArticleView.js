@@ -2,6 +2,7 @@ import "../styles/ArticleView.css";
 import { cloneElement } from "react";
 import { useScreen, useUser } from "../contexts";
 import { DeleteButton } from ".";
+import { MessageIcon } from "../icons";
 
 export default function ArticleView({ article, setParams, children }) {
   document.getElementsByClassName("App")[0].style.backgroundColor =
@@ -46,6 +47,20 @@ export default function ArticleView({ article, setParams, children }) {
           </h5>
           <h4 className="article-view-title">{article.title}</h4>
           <p className="article-body">{article.body}</p>
+          {!isGreaterThan992px && (
+            <div className="arts-buttons">
+              <div className="voting-box">
+                {cloneElement(children, {
+                  id: article.article_id,
+                  votes: article.votes,
+                })}
+              </div>
+              <div className="comment-box">
+                <MessageIcon className="vote" />
+                <p className="comment-count">{article.comment_count}</p>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

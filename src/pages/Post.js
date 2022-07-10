@@ -35,7 +35,7 @@ function Post() {
         setArticle={setArticle}
         setParams={setParams}
       >
-        <VoteButtons data={article} setData={setArticle} />
+        <VoteButtons data={article} setData={setArticle} type={"article"} />
       </ArticleView>
       {!isGreaterThan992px && (
         <SortComments params={params} setParams={setParams} />
@@ -62,7 +62,7 @@ function Post() {
         status={status}
         setStatus={setStatus}
       >
-        <VoteButtons data={comments} setData={setComments} />
+        <VoteButtons data={comments} setData={setComments} type={"comment"} />
       </CommentList>
       <Pagination
         comments={comments}

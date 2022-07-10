@@ -37,7 +37,7 @@ export default function Pagination({
           author: filter,
         });
   }
-  console.log(pathname);
+
   function handleNext() {
     return handlePage(params.p === pageTotal.pages ? params.p : params.p + 1);
   }

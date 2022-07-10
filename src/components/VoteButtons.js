@@ -5,7 +5,7 @@ import { ArrowUpIcon, ArrowDownIcon } from "../icons";
 export default function VoteButtons({ id, votes, data, setData, type }) {
   const { state, handleVote } = useVotes();
   const { articleVotes, commentVotes } = state;
-
+  console.log(type);
   return (
     <>
       <button

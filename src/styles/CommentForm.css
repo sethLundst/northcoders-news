@@ -100,6 +100,7 @@
     margin-right: 40px;
     margin-left: 40px;
     background-color: var(--bg-secondary);
+    margin-bottom: 0px;
   }
   .comment-box2 {
     padding: 0.625rem;
