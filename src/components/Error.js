@@ -15,15 +15,6 @@ function Error({ message }) {
         <button
           className="error-button"
           onClick={() => {
-            navigate(-1);
-          }}
-        >
-          Back
-        </button>
-        <button
-          className="error-button"
-          style={{ backgroundColor: "var(--green)" }}
-          onClick={() => {
             navigate("/");
           }}
         >

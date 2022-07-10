@@ -14,6 +14,7 @@ export default function TopicDropdown({ setOpen }) {
     setSelected(topic);
     setParams({ ...params, topic: topic === "All" ? "" : topic.toLowerCase() });
     setOpen(false);
+    navigate("/");
   }
 
   const icons = {

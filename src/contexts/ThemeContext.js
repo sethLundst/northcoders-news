@@ -8,7 +8,14 @@ export function ThemeProvider({ children }) {
   );
 
   useEffect(() => {
+    document
+      .querySelector("html")
+      .setAttribute("data-theme", dark ? "dark" : "light");
+  });
+
+  useEffect(() => {
     const theme = localStorage.getItem("theme");
+
     if (theme) {
       setDark(JSON.parse(theme));
     }

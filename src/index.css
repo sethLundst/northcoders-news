@@ -2,6 +2,7 @@
   --logo-red: rgb(217 61 43);
   --red: rgb(204 62 44);
   --yellow: rgb(250 204 21);
+  --nav-mobile: rgb(31, 37, 52);
   --switch-blue: rgb(77 159 234);
 }
 
@@ -10,16 +11,29 @@
   --author: rgb(217 61 43);
   --bg-primary: rgb(215 220 226);
   --bg-secondary: rgb(255 255 255);
+  --bg-mobile: rgb(255, 255, 255);
+  --bg-mobile-secondary: rgb(239, 239, 237);
   --bg-negative: rgb(26 26 27);
   --bg-dark: rgb(248, 249, 250);
-  --fg-primary: rgb(51 121 207);
-  --fg-secondary: rgb(67 132 211);
-  --border: rgb(204 204 204);
-  --border-secondary: rgb(137 137 137);
+  --fg-primary: rgb(51, 121, 207);
+  --fg-secondary: rgb(67, 132, 211);
+  --border: rgb(204, 204, 204);
+  --border-secondary: rgb(137, 137, 137);
   --border-dark: rgb(238, 239, 241);
+  --button-blue: rgb(51, 121, 207);
+  --button-text: rgb(0, 0, 0);
   --gray: rgb(246 247 248);
   --green: rgb(92, 193, 102);
   --highlighted: rgb(245 245 245);
+  --icon: rgb(204, 204, 202);
+  --loading-gray: rgb(245, 246, 248);
+  --loading-gray2: rgb(239, 240, 242);
+  --mob-article: rgb(255, 255, 255);
+  --mob-article-bg: rgb(238, 239, 241);
+  --mob-gray: rgb(239, 239, 237);
+  --mob-button: rgb(239, 239, 237);
+  --mob-btn-text: rgb(220, 236, 251);
+  --mob-btn-text-alt: rgb(179, 171, 171);
   --pagination: rgb(164, 165, 166);
   --search-border: rgb(51 121 207);
   --switch-off: rgb(232 232 232);
@@ -37,6 +51,8 @@
   --author: rgb(126, 127, 128);
   --bg-primary: rgb(3 3 3);
   --bg-secondary: rgb(26 26 27);
+  --bg-mobile: rgb(0, 0, 0);
+  --bg-mobile-secondary: rgb(53, 53, 53);
   --bg-negative: rgb(255 255 255);
   --bg-dark: rgb(22, 22, 23);
   --fg-primary: rgb(216 218 220);
@@ -44,9 +60,19 @@
   --border: rgb(52 53 54);
   --border-secondary: rgb(130, 131, 132);
   --border-dark: rgb(52, 52, 53);
+  --button-blue: rgb(51, 121, 207);
+  --button-text: rgb(255, 255, 255);
   --gray: rgb(39 39 41);
   --green: rgb(74, 159, 81);
   --highlighted: rgb(35 35 36);
+  --icon: rgb(47, 47, 45);
+  --loading-gray: rgb(45, 44, 47);
+  --loading-gray2: rgb(38, 37, 40);
+  --mob-article: rgb(18, 18, 19);
+  --mob-article-bg: rgb(5, 5, 5);
+  --mob-btn-text: rgb(220, 236, 251);
+  --mob-btn-text-alt: rgb(148, 148, 145);
+  --mob-gray: rgb(84, 84, 82);
   --pagination: rgb(39 39 41);
   --search-border: rgb(216 218 220);
   --switch-off: rgb(232 232 232);
@@ -58,20 +84,31 @@
   --user-background: rgb(39 39 41);
 }
 
-html {
-  scroll-behavior: smooth;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html,
-body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
+body,
+#root {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
+  background-color: var(--bg-primary);
 }
+
+/* html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+} */
 
 h2 {
   line-height: 1.25rem;
@@ -99,14 +136,17 @@ ul {
 }
 
 .App {
-  color: rgb(255, 255, 255);
+  background-color: var(--bg-mobile);
   text-align: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  background-color: var(--bg-primary);
-  overflow: auto;
-  height: 100vh;
   z-index: -1;
+}
+
+@media (min-width: 992px) {
+  .App {
+    background-color: var(--bg-primary);
+  }
 }
 
 *,

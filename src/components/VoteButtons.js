@@ -28,7 +28,7 @@ export default function VoteButtons({ id, votes, data, setData, type }) {
           }`}
         />
       </button>
-      <p className="vote-count">{votes}</p>
+      <div className="vote-count">{votes ? votes : "Vote"}</div>
       <button
         id={id}
         onClick={(event) => {

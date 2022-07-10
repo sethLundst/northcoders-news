@@ -32,6 +32,7 @@ import { ReactComponent as TopicIcon } from "./topic.svg";
 import { ReactComponent as TrashIcon } from "./trash.svg";
 import { ReactComponent as UserIcon } from "./person-outline.svg";
 import { ReactComponent as Logo } from "./logo.svg";
+import { ReactComponent as XIcon } from "./x.svg";
 
 export {
   AlertIcon,
@@ -68,4 +69,5 @@ export {
   ThumbUpIcon,
   TrashIcon,
   UserIcon,
+  XIcon,
 };

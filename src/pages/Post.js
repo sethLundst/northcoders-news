@@ -6,14 +6,17 @@ import {
   CommentList,
   Pagination,
   SortByDropdown,
+  SortComments,
   VoteButtons,
   Loading,
 } from "../components";
+import { useScreen } from "../contexts";
 import { useFetchArticle, useFetchComments } from "../hooks";
 
 function Post() {
   const navigate = useNavigate();
   const { article_id } = useParams();
+  const { isGreaterThan992px } = useScreen();
   const [params, setParams] = useState({
     limit: 10,
     p: 1,
@@ -34,6 +37,9 @@ function Post() {
       >
         <VoteButtons data={article} setData={setArticle} />
       </ArticleView>
+      {!isGreaterThan992px && (
+        <SortComments params={params} setParams={setParams} />
+      )}
       <CommentForm
         comments={comments}
         setComments={setComments}
@@ -43,7 +49,9 @@ function Post() {
         status={status}
         setStatus={setStatus}
       />
-      <SortByDropdown params={params} setParams={setParams} />
+      {isGreaterThan992px && (
+        <SortByDropdown params={params} setParams={setParams} />
+      )}
       <CommentList
         article={article}
         setArticle={setArticle}

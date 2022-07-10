@@ -1,6 +1,5 @@
 import "../styles/Search.css";
 import { useRef, useState } from "react";
-import { Loading } from ".";
 import { useFetchArticles, useOnClickOutside } from "../hooks";
 import { SearchIcon } from "../icons";
 import { Link, useNavigate } from "react-router-dom";
@@ -9,7 +8,7 @@ function Search() {
   const [isFocused, setIsFocused] = useState(false);
   const navigate = useNavigate();
   const ref = useRef();
-  const { articles, error, isLoading } = useFetchArticles({
+  const { articles, error } = useFetchArticles({
     limit: 1000,
     p: 1,
   });
@@ -47,7 +46,6 @@ function Search() {
   });
 
   if (error) navigate("/error", { state: error.data });
-  if (isLoading) return <Loading />;
 
   return (
     <div className="search">

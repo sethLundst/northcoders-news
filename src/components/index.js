@@ -7,11 +7,16 @@ import DeleteButton from "./DeleteButton";
 import Dropdown from "./Dropdown";
 import Error from "./Error";
 import Loading from "./Loading";
+import LoadingArticles from "./LoadingArticles";
+import { MobileDropdownMenu, MobileDropdownIcon } from "./MobileDropdown";
+import MobileNav from "./MobileNav";
 import Navbar from "./Navbar";
 import NewPost from "./NewPost";
 import Pagination from "./Pagination";
 import Search from "./Search";
 import SortByDropdown from "./SortByDropdown";
+import SortComments from "./SortComments";
+import SortPosts from "./SortPosts";
 import Switch from "./Switch";
 import Tabs from "./Tabs";
 import TopicDropdown from "./TopicDropdown";
@@ -30,11 +35,17 @@ export {
   Dropdown,
   Error,
   Loading,
+  LoadingArticles,
+  MobileDropdownMenu,
+  MobileDropdownIcon,
+  MobileNav,
   Navbar,
   NewPost,
   Pagination,
   Search,
   SortByDropdown,
+  SortComments,
+  SortPosts,
   Switch,
   Tabs,
   TopicDropdown,

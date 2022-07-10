@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import { Error, Navbar } from "./components";
 import {
   ParamsProvider,
+  ScreenProvider,
   ThemeProvider,
   UserProvider,
   VotesProvider,
@@ -10,8 +11,8 @@ import { Home, Post } from "./pages";
 
 function App() {
   return (
-    <>
-      <ThemeProvider>
+    <ThemeProvider>
+      <ScreenProvider>
         <UserProvider>
           <VotesProvider>
             <ParamsProvider>
@@ -25,8 +26,8 @@ function App() {
             </ParamsProvider>
           </VotesProvider>
         </UserProvider>
-      </ThemeProvider>
-    </>
+      </ScreenProvider>
+    </ThemeProvider>
   );
 }
 

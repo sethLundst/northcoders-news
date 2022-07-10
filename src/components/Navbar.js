@@ -1,5 +1,5 @@
 import "../styles/Navbar.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   Dropdown,
   NewPost,
@@ -8,14 +8,27 @@ import {
   TopicDropdownButton,
   UserDropdown,
   UserDropdownButton,
+  MobileNav,
 } from ".";
 import { Logo } from "../icons";
+import { useScreen } from "../contexts";
 
 export default function Navbar() {
+  const { pathname } = useLocation();
+  const { isGreaterThan992px } = useScreen();
+
   return (
     <header>
       <div className="header-container">
-        <Link to="/" className="header" onClick={() => {}}>
+        <Link
+          to="/"
+          className="header"
+          onClick={() => {
+            if (pathname === "/") {
+              window.location.reload();
+            }
+          }}
+        >
           <Logo className="logo" />
           <h1 className="title">Northcoders News</h1>
         </Link>
@@ -31,9 +44,13 @@ export default function Navbar() {
 
         <div className="flex-end">
           <NewPost />
-          <Dropdown icon={<UserDropdownButton />}>
-            <UserDropdown />
-          </Dropdown>
+          {isGreaterThan992px ? (
+            <Dropdown icon={<UserDropdownButton />}>
+              <UserDropdown />
+            </Dropdown>
+          ) : (
+            <MobileNav />
+          )}
         </div>
       </div>
     </header>

@@ -6,6 +6,8 @@ import { useTheme } from "../contexts/ThemeContext";
 export default function UserDropdown() {
   const { dark, setDark } = useTheme();
 
+  const toggleDark = () => setDark(!dark);
+
   return (
     <div className="user-dropdown">
       <div className="user-menu">
@@ -18,12 +20,7 @@ export default function UserDropdown() {
           <Settings className="user-menu-icon" />
           Settings
         </li>
-        <button
-          className="user-menu-option"
-          onClick={() => {
-            setDark(!dark);
-          }}
-        >
+        <button className="user-menu-option" onClick={toggleDark}>
           Dark Mode
           <Switch state={dark} setState={setDark} />
         </button>

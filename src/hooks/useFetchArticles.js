@@ -3,14 +3,11 @@ import { getArticles } from "../api";
 import { useParams } from "../contexts";
 
 export default function useFetchArticles(articleParams) {
-  const { params, setParams } = useParams();
+  const { params } = useParams();
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isReloading, setIsReloading] = useState(false);
   const [error, setError] = useState(null);
-
-  if (articleParams.length) {
-    setParams(articleParams);
-  }
 
   useEffect(() => {
     async function fetchArticles() {
@@ -18,12 +15,14 @@ export default function useFetchArticles(articleParams) {
         const response = await getArticles(params);
         setArticles(response.data.articles);
         setIsLoading(false);
+        setIsReloading(false);
       } catch (error) {
         setError({ error });
       }
     }
+    if (!isLoading) setIsReloading(true);
     fetchArticles();
-  }, [params]);
+  }, [isLoading, params]);
 
-  return { articles, setArticles, error, isLoading };
+  return { articles, setArticles, error, isLoading, isReloading };
 }

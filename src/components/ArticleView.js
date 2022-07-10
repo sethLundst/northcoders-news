@@ -1,17 +1,27 @@
 import "../styles/ArticleView.css";
 import { cloneElement } from "react";
-import { useUser } from "../contexts";
+import { useScreen, useUser } from "../contexts";
 import { DeleteButton } from ".";
 
 export default function ArticleView({ article, setParams, children }) {
+  document.getElementsByClassName("App")[0].style.backgroundColor =
+    "var(--mob-article-bg)";
+
+  const { isGreaterThan992px } = useScreen();
   const { user } = useUser();
   return (
     <div>
+      <div className="mob-article-background"> </div>
       <div className="article-view-card" id="article-view-card">
-        {cloneElement(children, {
-          id: article.article_id,
-          votes: article.votes,
-        })}
+        {isGreaterThan992px && (
+          <div className="art-view-votes">
+            {cloneElement(children, {
+              id: article.article_id,
+              votes: article.votes,
+            })}
+          </div>
+        )}
+
         <div className="article-view-details">
           <h5>
             nc/{article.topic} ·
