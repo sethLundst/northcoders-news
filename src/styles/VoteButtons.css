@@ -1,7 +1,7 @@
 .vote {
-  display: inline-block;
-  width: 1.4rem;
-  height: 1.4rem;
+  display: flex;
+  width: 20px;
+  height: 20px;
   color: var(--text-gray);
   cursor: pointer;
 }
@@ -21,9 +21,14 @@
 }
 
 .vote-count {
-  text-align: center;
   padding-left: 5px;
   padding-right: 5px;
+  font-weight: 600;
+  font-size: 12px;
+  max-width: 100px;
+  justify-content: center;
+  text-align: center;
+  align-self: center;
 }
 
 @media (min-width: 1024px) {
@@ -38,9 +43,9 @@
   }
 }
 
-@media (min-width: 480px) {
+@media (min-width: 992) {
   .vote {
-    width: 1.6rem;
-    height: 1.6rem;
+    width: 25px;
+    height: 25px;
   }
 }

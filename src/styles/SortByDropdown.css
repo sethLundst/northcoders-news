@@ -3,10 +3,8 @@
   position: relative;
   justify-content: left;
   text-align: left;
-  margin-right: 20px;
-  margin-left: 20px;
   padding-bottom: 20px;
-  background-color: var(--bg-secondary);
+  background-color: var(--mob-article);
 }
 
 .sort-by-button {
@@ -16,9 +14,8 @@
   line-height: 1.25rem;
   padding-top: 0.32rem;
   margin-left: 60px;
-
   padding-bottom: 0.32rem;
-  background-color: var(--bg-secondary);
+  background-color: var(--mob-article);
   font-size: 0.875rem;
   font-weight: 600;
   justify-content: left;
@@ -54,9 +51,13 @@
   transform-origin: top right;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   .sort-by-button-container {
     margin-right: 40px;
     margin-left: 40px;
+    background-color: var(--bg-secondary);
+  }
+  .sort-by-button {
+    background-color: var(--bg-secondary);
   }
 }

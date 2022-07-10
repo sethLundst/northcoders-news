@@ -2,15 +2,11 @@
   display: flex;
   width: 100%;
   align-items: center;
-  border-color: var(--border-dark);
-  border-left-width: 1px;
 }
 
 .clps-button {
   float: left;
   display: none;
-  padding: 8px;
-  margin-left: 5px;
 }
 
 .article-button:hover {
@@ -32,6 +28,7 @@
   padding-right: 20px;
   padding-top: 5px;
   padding-bottom: 5px;
+  margin-left: 5px;
   flex-wrap: wrap;
   align-items: left;
 }
@@ -39,5 +36,7 @@
 @media (min-width: 480px) {
   .clps-button {
     display: flex;
+    padding: 8px;
+    margin-left: 5px;
   }
 }

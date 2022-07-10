@@ -3,9 +3,9 @@
 }
 
 .user-button {
-  display: flex;
+  display: none;
   width: 100%;
-  color: var(--text);
+  color: rgb(255, 255, 255);
   border: 1px solid;
   border-color: var(--bg-secondary);
   line-height: 1rem;
@@ -14,7 +14,7 @@
   padding-left: 0.5rem;
   margin-bottom: 0.2rem;
   padding-right: 1rem;
-  background-color: var(--bg-secondary);
+  background-color: var(--bg-mob);
   font-size: 0.875rem;
   font-weight: 600;
   justify-content: left;
@@ -108,7 +108,7 @@
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   .user-button {
     display: flex;
     width: 210px;
@@ -138,6 +138,7 @@
     margin-top: 0.3rem;
   }
 }
+
 @media (min-width: 1024px) {
   .user-chevron2 {
     width: 1rem;

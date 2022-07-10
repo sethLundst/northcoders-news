@@ -1,0 +1,39 @@
+.animation {
+  display: flex;
+  position: relative;
+  height: 20px;
+  border-radius: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 100%;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: gradient;
+  animation-timing-function: linear;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    to right,
+    var(--loading-gray) 8%,
+    var(--loading-gray2) 18%,
+    var(--loading-gray) 33%
+  );
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0px 0;
+  }
+  100% {
+    background-position: 100em 0;
+  }
+}

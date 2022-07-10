@@ -1,7 +1,7 @@
 header {
   display: flex;
   height: 50px;
-  background-color: var(--bg-secondary);
+  background-color: var(--nav-mobile);
   justify-content: space-between;
   flex-grow: 1;
 }
@@ -10,6 +10,7 @@ header {
   width: 100%;
   display: flex;
   height: 50px;
+  z-index: 1;
   align-items: center;
   margin-inline-start: 0.75rem;
 }
@@ -19,7 +20,6 @@ header {
   margin-inline-end: 1rem;
   color: var(--text);
   align-items: center;
-  margin-right: 1rem;
   text-decoration: none;
 }
 
@@ -31,6 +31,7 @@ header {
 
 .title {
   display: none;
+  color: rgb(255, 255, 255);
 }
 
 .logo {
@@ -56,31 +57,46 @@ nav {
 .new-article {
   max-width: 100%;
   border: solid;
+  border-color: var(--button-blue);
+  background-color: var(--button-blue);
+  color: rgb(255, 255, 255);
   height: auto;
-  color: var(--bg-secondary);
   cursor: pointer;
   white-space: nowrap;
   text-align: center;
-  height: auto;
-  margin-top: 2px;
-  margin-bottom: 2px;
+  margin-top: 8px;
+  margin-bottom: 8px;
   margin-left: -0.1rem;
   margin-right: 0.5rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  font-size: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 12px;
   border-radius: 9999px;
   border-top-width: 0px;
   border-left-width: 0px;
   border-right-width: 0px;
   border-width: 1px;
-  border-color: var(--fg-primary);
-  background-color: var(--fg-primary);
   font-weight: 700;
 }
 
 .new-article:hover {
   background-color: var(--fg-secondary);
+}
+
+@media (min-width: 992px) {
+  .title {
+    color: var(--text);
+  }
+  .new-article {
+    margin-top: 2px;
+    margin-bottom: 2px;
+    font-size: 14px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-color: var(--fg-primary);
+    background-color: var(--fg-primary);
+    color: var(--bg-secondary);
+  }
 }
 
 .nav-search {
@@ -93,10 +109,16 @@ nav {
   }
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 992px) {
   header {
     display: block;
     height: 50px;
+    background-color: var(--bg-secondary);
+  }
+}
+
+@media (min-width: 992px) {
+  header {
     background-color: var(--bg-secondary);
   }
 }
@@ -109,7 +131,7 @@ nav {
   }
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 992px) {
   nav {
     display: flex;
     width: 100%;

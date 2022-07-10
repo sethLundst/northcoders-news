@@ -1,8 +1,12 @@
 .page-container {
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 2rem;
-  padding-top: 1.25rem;
+  display: flex;
+  align-items: center;
+  height: 50px;
+  padding-top: 12px;
+  justify-content: flex-end;
+  padding-bottom: 12px;
+  padding-right: 15px;
+  padding-left: 15px;
 }
 
 .page-card {
@@ -48,6 +52,23 @@
   border-width: 1px;
   font-size: 0.875rem;
   line-height: 1.25rem;
+}
+
+.page-btn-mob {
+  align-items: center;
+  background-color: var(--button-blue);
+  color: rgb(255, 255, 255);
+  border-radius: 20px;
+  cursor: pointer;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-size: 14px;
+  font-weight: 700;
+  height: 35px;
+  line-height: 1.5em;
+  overflow: hidden;
+  padding: 5px 15px;
+  white-space: nowrap;
 }
 
 .prev {
@@ -110,6 +131,8 @@
 
 @media (min-width: 768px) {
   .page-container {
+    display: block;
+    padding-top: 1.25rem;
     padding-left: 40px;
     padding-right: 40px;
   }
